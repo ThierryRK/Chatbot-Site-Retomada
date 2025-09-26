@@ -1,10 +1,7 @@
 from google.adk.agents import Agent
 from google.adk.models.lite_llm import LiteLlm
 
-from sub_agentes.agente_de_perguntas_frequentes.agent import agente_de_perguntas_frequentes
-from sub_agentes.agente_de_redirecionamento_de_páginas.agent import agente_de_redirecionamento_de_páginas
-from sub_agentes.agente_de_tranferência_para_atendimento_humano.agent import \
-    agente_de_tranferência_para_atendimento_humano
+from sub_agentes.agente_de_sequencia_de_resumos_de_pagina_web.agent import agente_de_sequencia_de_resumos_de_pagina_web
 
 ollama_endpoint = "http://localhost:11434"
 root_agent = Agent(
@@ -17,11 +14,8 @@ root_agent = Agent(
     Sempre encarregue a tarefa para os agente apropriados. Use o melhor do seu julgamento para determinar qual o agente apropriado para a tarefa.
 
     Você é responsável por encarregar tarefas para os seguintes agentes:
-    - agente_de_perguntas_frequentes
-    - agente_de_redirecionamento_de_páginas
-    - agente_de_tranferência_para_atendimento_humano
+    - agente_de_sequencia_de_resumos_de_pagina_web
 
     ''',
-    sub_agents=[agente_de_perguntas_frequentes, agente_de_redirecionamento_de_páginas,
-                agente_de_tranferência_para_atendimento_humano]
+    sub_agents=[agente_de_sequencia_de_resumos_de_pagina_web]
 )

@@ -15,7 +15,10 @@ root_agent = Agent(
 
     Você é responsável por encarregar tarefas para os seguintes agentes:
     - agente_de_sequencia_de_resumos_de_pagina_web
-
+    
+    Caso o usuário pergunte sobre o Programa Mais empregos, Cursos oferecidos pelo Cotec ou a Cerveja de mandioca passe delegue para a agente_de_sequencia_de_resumos_de_pagina_web
+    
+    Se o usúario não der informações o suficiente para decidir a quem delegar, peça ao usuário por mais informações.
     ''',
     sub_agents=[agente_de_sequencia_de_resumos_de_pagina_web]
 )

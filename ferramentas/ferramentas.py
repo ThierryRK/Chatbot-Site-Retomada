@@ -65,4 +65,4 @@ url = "https://goias.gov.br/retomada/perguntas-frequentes-sobre-o-programa-mais-
 texto = extrair_texto_pagina_web(url)
 if texto:
     print("Texto extraído com sucesso!")
-    print(texto)
+    print(texto["texto_extraido"])

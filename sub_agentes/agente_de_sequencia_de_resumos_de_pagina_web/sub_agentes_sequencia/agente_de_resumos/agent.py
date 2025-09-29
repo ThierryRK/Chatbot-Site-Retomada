@@ -9,6 +9,6 @@ agente_de_resumos = Agent(
     instruction='''
     Você é um agente que resumi o texto recebido enfatizando os pontos mais importantes para o conteúdo
     
-     
+    Resuma o texto extraido de maneira concisa, mas completa.
     ''',
 )

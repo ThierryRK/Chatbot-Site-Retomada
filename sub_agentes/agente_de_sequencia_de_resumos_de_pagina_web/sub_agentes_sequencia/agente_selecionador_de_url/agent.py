@@ -1,6 +1,10 @@
 from google.adk.agents import Agent
 from google.adk.models.lite_llm import LiteLlm
+from pydantic import BaseModel, Field
 
+
+class URLEscolhido(BaseModel):
+    url: str = Field(description="URL de uma página web.")
 
 ollama_endpoint = "http://localhost:11434"
 agente_selecionador_de_url = Agent(
@@ -18,5 +22,12 @@ agente_selecionador_de_url = Agent(
     
     Caso o usuário deseje informações sobre a Cerveja de mandioca escolha o seguinte url:
     https://goias.gov.br/retomada/perguntas-frequentes-sobre-a-cerveja-de-mandioca/
+    
+    IMPORTANTE: a resposta deve se um JSON válido atendendo a seguinte estrutura:
+    {"url": "url aqui"}
+    
+    NÃO inclua quaisquer explicações, texto adicional, espaços vazios ou quebras de linhas além da resposta JSON.
     ''',
+    output_schema=URLEscolhido,
+    output_key="url"
 )

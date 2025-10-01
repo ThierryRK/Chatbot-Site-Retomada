@@ -15,7 +15,7 @@ agente_extrator_de_conteudo_pagina_web = LlmAgent(
     instruction='''
     Você é um agente que extraí textos de páginas web.
     
-    Use o url recebido para extrair e armazenar o conteúdo da página web, então passe para o agente_de_resumos.
+    Use o url recebido para extrair e armazenar o conteúdo da página web, NUNCA repita essa mais de uma vez.
     ''',
     tools=[extrair_texto_pagina_web],
     #output_schema=TextoExtraido,

@@ -27,6 +27,8 @@ agente_selecionador_de_url = LlmAgent(
     {"url": "url aqui"}
     
     NÃO inclua quaisquer explicações, texto adicional, espaços vazios ou quebras de linhas além da resposta JSON.
+    
+    NUNCA responda ao usuário, apenas faça sua tarefa.
     ''',
     #output_schema=URLEscolhido,
     output_key="url"

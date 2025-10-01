@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def extrair_texto_pagina_web(url: str, inicio_apos: str = "Transparência Fale Conosco", fim_antes: str = "Governo na") -> dict:
+def extrair_texto_pagina_web(url: str) -> dict:
     """
     Extrai e armazena o texto de uma página web
 
@@ -12,6 +12,9 @@ def extrair_texto_pagina_web(url: str, inicio_apos: str = "Transparência Fale C
     Returns:
         str: Texto extraído da página web
     """
+    inicio_apos: str = "Transparência Fale Conosco"
+    fim_antes: str = "Governo na"
+
     try:
         # Fazer requisição HTTP
         headers = {
@@ -58,3 +61,10 @@ def extrair_texto_pagina_web(url: str, inicio_apos: str = "Transparência Fale C
     except requests.exceptions.RequestException as e:
         print(f"Erro ao acessar a página: {e}")
         return None
+
+# Teste
+#url = "https://goias.gov.br/retomada/perguntas-frequentes-sobre-o-programa-mais-empregos/"
+#texto = extrair_texto_pagina_web(url)
+#if texto:
+#    print("Texto extraído com sucesso!")
+#    print(texto)

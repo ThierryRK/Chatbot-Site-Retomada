@@ -1,10 +1,10 @@
-from google.adk.agents import Agent
+from google.adk.agents import Agent, LlmAgent
 from google.adk.models.lite_llm import LiteLlm
 
 from sub_agentes.agente_de_sequencia_de_resumos_de_pagina_web.agent import agente_de_sequencia_de_resumos_de_pagina_web
 
 ollama_endpoint = "http://localhost:11434"
-root_agent = Agent(
+root_agent = LlmAgent(
     model=LiteLlm(model="ollama_chat/qwen2.5:14b", base_url=ollama_endpoint),
     name='Gerente',
     description='Você é um agente que delega tarefas.',

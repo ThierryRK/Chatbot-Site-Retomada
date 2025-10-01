@@ -58,11 +58,3 @@ def extrair_texto_pagina_web(url: str, inicio_apos: str = "Transparência Fale C
     except requests.exceptions.RequestException as e:
         print(f"Erro ao acessar a página: {e}")
         return None
-
-
-# Exemplo de uso
-url = "https://goias.gov.br/retomada/perguntas-frequentes-sobre-o-programa-mais-empregos/"
-texto = extrair_texto_pagina_web(url)
-if texto:
-    print("Texto extraído com sucesso!")
-    print(texto["texto_extraido"])

@@ -1,13 +1,13 @@
-from google.adk.agents import Agent
+from google.adk.agents import Agent, LlmAgent
 from google.adk.models.lite_llm import LiteLlm
 from pydantic import BaseModel, Field
 
 
-class URLEscolhido(BaseModel):
-    url: str = Field(description="URL de uma página web.")
+#class URLEscolhido(BaseModel):
+#    url: str = Field(description="URL de uma página web.")
 
 ollama_endpoint = "http://localhost:11434"
-agente_selecionador_de_url = Agent(
+agente_selecionador_de_url = LlmAgent(
     model=LiteLlm(model="ollama_chat/qwen2.5:14b", base_url=ollama_endpoint),
     name='agente_selecionador_de_url',
     description='Você é um agente que seleciona os url.',
@@ -28,6 +28,6 @@ agente_selecionador_de_url = Agent(
     
     NÃO inclua quaisquer explicações, texto adicional, espaços vazios ou quebras de linhas além da resposta JSON.
     ''',
-    output_schema=URLEscolhido,
+    #output_schema=URLEscolhido,
     output_key="url"
 )

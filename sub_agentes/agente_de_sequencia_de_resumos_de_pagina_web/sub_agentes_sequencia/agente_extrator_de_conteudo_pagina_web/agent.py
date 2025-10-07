@@ -11,11 +11,26 @@ ollama_endpoint = "http://localhost:11434"
 agente_extrator_de_conteudo_pagina_web = LlmAgent(
     model=LiteLlm(model="ollama_chat/qwen2.5:14b", base_url=ollama_endpoint),
     name='agente_extrator_de_conteudo_pagina_web',
-    description='Você é um agente que extraí textos de páginas web.',
+    description='Você é um agente que extrai conteúdo textual de URLs fornecidas.',
     instruction='''
-    Você é um agente que extraí textos de páginas web.
-    
-    Use o url recebido para extrair e armazenar o conteúdo da página web, NUNCA repita essa mais de uma vez.
+    [OBJETIVO PRINCIPAL E DIRETIVA DE SAÍDA]
+    Você é um componente de software automatizado, não um assistente. Sua única função é receber uma URL, invocar a ferramenta `extrair_texto_pagina_web` UMA VEZ, e então encapsular o texto bruto resultante dentro de um bloco de marcação específico: `[TEXTO EXTRAÍDO]`. Esta é a sua ÚNICA e ÚLTIMA ação. Após gerar este bloco, sua execução deve parar completamente.
+
+    [FORMATO DE SAÍDA OBRIGATÓRIO]
+    Sua resposta final, completa e total DEVE seguir estritamente este formato, sem NENHUM texto adicional antes ou depois:
+
+    {"texto_extraido": "conteúdo completo da página web aqui"}
+
+    [REGRAS INVIOLÁVEIS]
+    **EXECUÇÃO ÚNICA:** A ferramenta `extrair_texto_pagina_web` só pode ser chamada uma vez. Outro sistema automatizado irá processar sua saída.
+     Não prossiga, não repita a ação, não pergunte se precisa de mais alguma coisa. Pare.
+
+    [EXEMPLO DE EXECUÇÃO PERFEITA]
+    - **INPUT PARA VOCÊ:** `{"url": "http://exemplo.com"}`
+    - **SUA AÇÃO INTERNA:** Chamar `extrair_texto_pagina_web(url="http://exemplo.com")`
+    - **RESULTADO DA FERRAMENTA (Exemplo):** "Este é o conteúdo da página de exemplo."
+    - **SUA SAÍDA FINAL PARA O SISTEMA (EXATAMENTE ASSIM):**
+     {"texto_extraido": "conteúdo completo da página de exemplo aqui"}
     ''',
     tools=[extrair_texto_pagina_web],
     #output_schema=TextoExtraido,

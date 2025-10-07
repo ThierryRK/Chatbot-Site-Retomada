@@ -21,7 +21,7 @@ agente_selecionador_de_url = LlmAgent(
     https://goias.gov.br/retomada/perguntas-frequentes-sobre-o-cursos-oferecidos-pelo-cotec/
     
     Caso o usuário deseje informações sobre a Cerveja de mandioca escolha o seguinte url:
-    https://goias.gov.br/retomada/perguntas-frequentes-sobre-a-cerveja-de-mandioca/
+    https://goias.gov.br/retomada/cerveja-de-mandioca/
     
     IMPORTANTE: a resposta deve se um JSON válido atendendo a seguinte estrutura:
     {"url": "url aqui"}

@@ -34,7 +34,7 @@ agente_suporte_humano = LlmAgent(
     "E-mail: protocolo.ser@goias.gov.br
     Telefone: (62) 3030-1480"
     
-    Atendimento ao Cidadão
+    Ouvidoria Setorial
     Caso o usuário deseje se comunicar com a Ouvidoria Setorial, ofereça os seguintes dados:
     "E-mail: ouvidoria.retomada@goias.gov.br"
     

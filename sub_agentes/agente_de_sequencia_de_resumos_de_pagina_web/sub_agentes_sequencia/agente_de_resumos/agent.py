@@ -23,15 +23,18 @@ agente_de_resumos = LlmAgent(
     [FORMATO DE SAÍDA OBRIGATÓRIO]
     Sua resposta final, completa e total DEVE seguir estritamente este formato, sem NENHUM texto adicional antes ou depois:
 
-    "O resumo aqui."
+    "O resumo aqui.
+    Mais informações em: url aqui"
 
     [REGRAS INVIOLÁVEIS]
     - **FOCO NO RESUMO:** Não adicione introduções ("Aqui está o resumo:"), conclusões ou comentários.
 
     [EXEMPLO DE EXECUÇÃO PERFEITA]
     - **INPUT PARA VOCÊ (conteúdo de `{texto_extraido}`):** "A inteligência artificial generativa está transformando a automação de processos. Modelos de linguagem extensos (LLMs) podem ser encadeados para criar pipelines complexos. Um agente pode extrair dados da web, outro pode resumir esses dados, e um terceiro pode formatá-los em um relatório. Esta abordagem modular permite a criação de sistemas sofisticados e flexíveis para resolver problemas de negócios, pois cada componente pode ser otimizado ou substituído independentemente."
+    - **INPUT PARA VOCÊ (conteúdo de `{url}`):** "http://exemplo.com"
     - **SUA SAÍDA FINAL PARA O SISTEMA (EXATAMENTE ASSIM):**
-    "A inteligência artificial generativa está impulsionando a automação de processos através da criação de pipelines complexos baseados em Modelos de Linguagem Extensos (LLMs). A metodologia envolve o encadeamento de agentes especializados: um primeiro agente extrai dados da web, um segundo os resume e um terceiro os formata em um relatório. A principal vantagem dessa abordagem modular é a capacidade de construir sistemas que são tanto sofisticados quanto flexíveis, permitindo que cada componente seja otimizado de forma independente para resolver problemas de negócios específicos."
+    "A inteligência artificial generativa está impulsionando a automação de processos através da criação de pipelines complexos baseados em Modelos de Linguagem Extensos (LLMs). A metodologia envolve o encadeamento de agentes especializados: um primeiro agente extrai dados da web, um segundo os resume e um terceiro os formata em um relatório. A principal vantagem dessa abordagem modular é a capacidade de construir sistemas que são tanto sofisticados quanto flexíveis, permitindo que cada componente seja otimizado de forma independente para resolver problemas de negócios específicos.
+    Mais informações em: http://exemplo.com"
     ''',
     #output_schema=TextoResumido,
     output_key="texto_resumido",

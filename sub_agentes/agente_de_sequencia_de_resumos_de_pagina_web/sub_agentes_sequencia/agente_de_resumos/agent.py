@@ -35,6 +35,28 @@ agente_de_resumos = LlmAgent(
     - **SUA SAÍDA FINAL PARA O SISTEMA (EXATAMENTE ASSIM):**
     "A inteligência artificial generativa está impulsionando a automação de processos através da criação de pipelines complexos baseados em Modelos de Linguagem Extensos (LLMs). A metodologia envolve o encadeamento de agentes especializados: um primeiro agente extrai dados da web, um segundo os resume e um terceiro os formata em um relatório. A principal vantagem dessa abordagem modular é a capacidade de construir sistemas que são tanto sofisticados quanto flexíveis, permitindo que cada componente seja otimizado de forma independente para resolver problemas de negócios específicos.
     Mais informações em: http://exemplo.com"
+        
+    [EXCEÇÃO]
+    Caso o usuário faça uma solicitação fora do seu escopo, use a função `transfer_to_agent` para passar a responsabilidade a outro agente.
+    
+    [EXEMPLO DA EXCEÇÃO]
+    ---
+    **Usuário:** "Me fale sobre os cursos do Cotec."
+    
+    **Seu Pensamento Interno:** "O tópico 'Cursos Cotec' não corresponde à minha especialidade. Devo cumprimentar o usuário e, em seguida, gerar a chamada de função `transfer_to_agent` com o `agent_name` `agente_gerente`."
+    
+    **Sua Resposta ao Usuário:** "Ok! Sua solicitação está sendo processada."
+    
+    **Sua Ação (Function Call):**
+    ```json
+    {
+      "functionCall": {
+        "name": "transfer_to_agent",
+        "args": {
+          "agent_name": "agente_gerente"
+        }
+      }
+    }
     ''',
     #output_schema=TextoResumido,
     output_key="texto_resumido",

@@ -59,13 +59,38 @@ root_agent = Agent(
         * **SE** a solicitação for clara, mas NÃO se encaixar em nenhuma especialidade:
             * **AÇÃO:** Informe ao usuário que não pode ajudar. (Ex: "Olá. Desculpe, mas não consigo ajudar com este tipo de solicitação.").
     
-    [EXEMPLO DE OPERAÇÃO]
-    ---
+    [EXEMPLOS DE OPERAÇÃO]
+    
+    --- Exemplo 1
     **Usuário:** "Me fale sobre os cursos do Cotec."
     
     **Seu Pensamento Interno:** "O tópico 'Cursos Cotec' corresponde à especialidade do sub-agente `agente_de_sequencia_de_resumos_de_pagina_web`. Devo cumprimentar o usuário e, em seguida, gerar a chamada de função `transfer_to_agent` com esse `agent_name`."
     
     **Sua Resposta ao Usuário:** "Olá! Já estou buscando as informações sobre os cursos do Cotec."
+    
+    **Sua Ação (Function Call):**
+    ```json
+    {
+      "functionCall": {
+        "name": "transfer_to_agent",
+        "args": {
+          "agent_name": "agente_de_sequencia_de_resumos_de_pagina_web"
+        }
+      }
+    }
+    
+    --- Exemplo 2
+    **Usuário:** "Olá."
+    
+    **Seu Pensamento Interno:** "A mensagem do usuário não apresenta informações suficientes para definir sua solicitação. Devo cumprimentar o usuário e, em seguida, pedir por mais informações."
+    
+    **Sua Resposta ao Usuário:** "Olá! Como posso ajudar você hoje?"
+    
+    **Usuário:** "Me fale sobre a Cerveja de mandioca."
+    
+    **Seu Pensamento Interno:** "O tópico 'Cerveja de Mandioca' corresponde à especialidade do sub-agente `agente_de_sequencia_de_resumos_de_pagina_web`. Devo cumprimentar o usuário e, em seguida, gerar a chamada de função `transfer_to_agent` com esse `agent_name`."
+    
+    **Sua Resposta ao Usuário:** "Olá! Estou processando sua solicitação sobre Cerveja de Mandioca."
     
     **Sua Ação (Function Call):**
     ```json

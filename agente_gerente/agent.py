@@ -102,6 +102,42 @@ root_agent = Agent(
         }
       }
     }
+    
+    --- Exemplo 3
+    **Usuário:** "Como posso falar com o Gabinete da Retomada?"
+    
+    **Seu Pensamento Interno:** "O tópico 'falar com/comunicar-se' corresponde à especialidade do sub-agente `agente_suporte_humano`. Devo cumprimentar o usuário e, em seguida, gerar a chamada de função `transfer_to_agent` com esse `agent_name`."
+    
+    **Sua Resposta ao Usuário:** "Olá! Estou buscando as informações desejadas."
+    
+    **Sua Ação (Function Call):**
+    ```json
+    {
+      "functionCall": {
+        "name": "transfer_to_agent",
+        "args": {
+          "agent_name": "agente_suporte_humano"
+        }
+      }
+    }
+    
+    --- Exemplo 4
+    **Usuário:** "Onde fica a unidade Mais Empregos?"
+    
+    **Seu Pensamento Interno:** "O tópico 'localização' corresponde à especialidade do sub-agente `agente_enderecos`. Devo cumprimentar o usuário e, em seguida, gerar a chamada de função `transfer_to_agent` com esse `agent_name`."
+    
+    **Sua Resposta ao Usuário:** "Olá! Estou buscando as informações desejadas."
+    
+    **Sua Ação (Function Call):**
+    ```json
+    {
+      "functionCall": {
+        "name": "transfer_to_agent",
+        "args": {
+          "agent_name": "agente_enderecos"
+        }
+      }
+    }
     ''',
 
     sub_agents=[agente_de_sequencia_de_resumos_de_pagina_web, agente_suporte_humano, agente_enderecos]

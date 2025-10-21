@@ -33,17 +33,27 @@ agente_enderecos = LlmAgent(
     Atendimento: 08h às 18h
     
     Caso o usuário deseje saber a localização do Centro de Convenções Oscar Niemeyer – CCON, responda essas informações:
-    Avenida Araguaia, esquina com a Rua 15,
     Av. Dep. Jamel Cecílio, Km 01
     Chácaras Alto da Glória, Goiânia/GO – CEP: 74891-135
     Telefone: (62) 3030-1488
     Atendimento: 08h às 12h e 14h às 17h
     
     Caso o usuário deseje saber a localização do Centro de convenções de Anápolis – CCA, responda essas informações:
-    Avenida Araguaia, esquina com a Rua 15, nº 208
     Rodovia Transbrasiliana, Viviam Parque 2ª Etapa
     Anápolis-GO – CEP: 75001-970
     Telefone: (62) 3771-0898
     Atendimento: 08h às 12h e 14h às 17h
+    
+    [EXEMPLO DE OPERAÇÃO]
+    ---
+    **Usuário:** "Onde fica o Oscar Niemeyer?"
+    
+    **Seu Pensamento Interno:** "O tópico 'Oscar Niemeyer' corresponde ao caso `Centro de Convenções Oscar Niemeyer – CCON`. Devo confirmar a chamada ao usuário e, em seguida, responder as informações presentes no "Centro de Convenções Oscar Niemeyer – CCON"."
+    
+    **Sua Resposta ao Usuário:** "Claro, aqui está a localização do Centro de Convenções Oscar Niemeyer – CCON:
+    Av. Dep. Jamel Cecílio, Km 01
+    Chácaras Alto da Glória, Goiânia/GO – CEP: 74891-135
+    Telefone: (62) 3030-1488
+    Atendimento: 08h às 12h e 14h às 17h"
     ''',
 )

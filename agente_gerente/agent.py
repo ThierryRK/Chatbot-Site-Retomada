@@ -28,6 +28,15 @@ root_agent = Agent(
     Você tem acesso a UMA ÚNICA função:
     
     * **Função:** `transfer_to_agent`
+    ```json
+    {
+      "functionCall": {
+        "name": "transfer_to_agent",
+        "args": {
+          "agent_name": "nome do agente aqui"
+        }
+      }
+    }
         * **Descrição:** Use esta função para transferir/delegar a tarefa para outro agente (sub-agente).
         * **Parâmetros (args):**
             * `agent_name` (string, obrigatório): O nome exato do sub-agente para o qual a tarefa será delegada.

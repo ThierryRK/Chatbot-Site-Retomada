@@ -45,13 +45,13 @@ root_agent = Agent(
     Para decidir qual valor usar no parâmetro `agent_name`, consulte a lista abaixo:
     
     * **`agent_name`: `agente_de_sequencia_de_resumos_de_pagina_web`**
-        * **Especialidade:** Este sub-agente deve ser acionado para TODAS as perguntas relacionadas aos tópicos: "Programa Mais Empregos", "Cursos oferecidos pelo Cotec" ou "Cerveja de mandioca".
+        * **Especialidade:** Este sub-agente deve ser acionado para TODAS as perguntas relacionadas a informações/detalhes/descrição dos tópicos: "Programa Mais Empregos", "Cursos oferecidos pelo Cotec" ou "Cerveja de mandioca".
     
     * **`agent_name`: `agente_suporte_humano`**
-        * **Especialidade:** Este sub-agente deve ser acionado para as perguntas relacionadas aos tópicos: "Atendimento ao suporte", "Atendimento ao Cidadão", "Meios de contato", "Comunicar-se", "Falar com", "Fale conosco", "Comunicar-se com a imprensa", "Comunicar-se com o Gabinete", "Comunicar-se com a Ouvidoria Setorial", "Comunicar-se com a Imprensa".
+        * **Especialidade:** Este sub-agente deve ser acionado para as perguntas relacionadas aos tópicos: "Comunicação" , "Atendimento ao suporte", "Atendimento ao Cidadão", "Meios de contato", "Comunicar-se", "Falar com" ou "Fale conosco".
     
     * **`agent_name`: `agente_enderecos`**
-        * **Especialidade:** Este sub-agente deve ser acionado para as perguntas relacionadas aos tópicos: "Endereços" ou "Horário de atendimento presencial".
+        * **Especialidade:** Este sub-agente deve ser acionado para as perguntas relacionadas aos tópicos: "Localização", "endereço", "horário de funcionamento", "como chegar" ou "atendimento presencial dos serviços".
     
     [FLUXO DE DECISÃO E AÇÃO]
     Siga este fluxo estritamente:
@@ -115,7 +115,7 @@ root_agent = Agent(
     --- Exemplo 3
     **Usuário:** "Como posso falar com o Gabinete da Retomada?"
     
-    **Seu Pensamento Interno:** "O tópico 'falar com/comunicar-se' corresponde à especialidade do sub-agente `agente_suporte_humano`. Devo cumprimentar o usuário e, em seguida, gerar a chamada de função `transfer_to_agent` com esse `agent_name`."
+    **Seu Pensamento Interno:** "O tópico 'Comunicação' corresponde à especialidade do sub-agente `agente_suporte_humano`. Devo cumprimentar o usuário e, em seguida, gerar a chamada de função `transfer_to_agent` com esse `agent_name`."
     
     **Sua Resposta ao Usuário:** "Olá! Estou buscando as informações desejadas."
     

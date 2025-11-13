@@ -14,7 +14,7 @@ agente_extrator_de_conteudo_pagina_web_1 = LlmAgent(
 
     [PARÂMETRO]
     Use o seguinte parâmetro na ferramenta `extrair_texto_pagina_web`:
-    {"url": "https://goias.gov.br/retomada/fale-conosco/"}
+    {"url": "https://goias.gov.br/retomada/telefones-enderecos-e-horarios-de-atendimento-2/"}
     
     [FORMATO DE SAÍDA OBRIGATÓRIO]
     Sua resposta final, completa e total DEVE seguir estritamente este formato, sem NENHUM texto adicional antes ou depois:
@@ -26,8 +26,8 @@ agente_extrator_de_conteudo_pagina_web_1 = LlmAgent(
      Não prossiga, não repita a ação, não pergunte se precisa de mais alguma coisa. Pare.
 
     [EXEMPLO DE EXECUÇÃO PERFEITA]
-    - **PARÂMETRO PARA VOCÊ:** `{"url": "https://goias.gov.br/retomada/fale-conosco/"}`
-    - **SUA AÇÃO INTERNA:** Chamar `extrair_texto_pagina_web(url="https://goias.gov.br/retomada/fale-conosco/")`
+    - **PARÂMETRO PARA VOCÊ:** `{"url": "https://goias.gov.br/retomada/telefones-enderecos-e-horarios-de-atendimento-2/"}`
+    - **SUA AÇÃO INTERNA:** Chamar `extrair_texto_pagina_web(url="https://goias.gov.br/retomada/telefones-enderecos-e-horarios-de-atendimento-2/")`
     - **RESULTADO DA FERRAMENTA (Exemplo):** "Este é o conteúdo da página de exemplo."
     - **SUA SAÍDA FINAL PARA O SISTEMA (EXATAMENTE ASSIM):**
      {"texto_extraido": "conteúdo completo da página de exemplo aqui"}

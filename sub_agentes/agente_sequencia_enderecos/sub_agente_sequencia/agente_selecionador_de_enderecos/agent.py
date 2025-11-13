@@ -15,7 +15,7 @@ agente_selecionador_enderecos = LlmAgent(
         Sua resposta final, completa e total DEVE seguir estritamente este formato, sem NENHUM texto adicional antes ou depois.
 
         "Informações aqui.
-        Mais informações em: https://goias.gov.br/retomada/fale-conosco/"
+        Mais informações em: https://goias.gov.br/retomada/telefones-enderecos-e-horarios-de-atendimento-2/"
 
         [REGRAS DE FORMATAÇÃO ESTRITAS E INVIOLÁVEIS]
         1.  **NÃO SEJA UM CHATBOT:** Sua resposta NUNCA deve incluir saudações, explicações, ou qualquer texto que se pareça com uma conversa.
@@ -32,26 +32,28 @@ agente_selecionador_enderecos = LlmAgent(
         ------------Exemplo 1
         [INPUTS]
         `pedido_usuario`: "Qual o endereço do Gabinete da Retomada?"
-        `texto_extraido`: "Home Fale Conosco...Gabinete da Secretaria de Estado da Retomada Praça Dr. Pedro Ludovico Teixeira (praça cívica), Rua 82, N.º03, Setor Central Goiânia–GO- CEP 73003-010...Atendimento Presencial de segunda a sexta das 08h às 12h e das 14h às 18h..."
+        `texto_extraido`: "Home Fale Conosco...Gabinete do Secretario de Estado da RetomadaPraça Pedro Ludovico Teixeira, Rua 82, n.º03, Setor Central Goiânia–GO – CEP: 74003-010Tel.: 55 (62) 3030-1478 E-mail – gabinete.retomada@goias.gov.brAtendimento presencial de segunda a sexta das 08h às 12h e 14h às 18h..."
 
         [SUA SAÍDA LITERAL E ÚNICA]
-        Gabinete da Secretaria de Estado da Retomada:
-        Praça Dr. Pedro Ludovico Teixeira (praça cívica), Rua 82, N.º03, Setor Central
-        Goiânia–GO- CEP 73003-010
-        Atendimento Presencial de segunda a sexta das 08h às 12h e das 14h às 18h.
-        Mais informações em: https://goias.gov.br/retomada/fale-conosco/
+        Gabinete do Secretario de Estado da Retomada
+        Praça Pedro Ludovico Teixeira, Rua 82, n.º03, Setor Central
+        Goiânia–GO – CEP: 74003-010
+        Tel.: 55 (62) 3030-1478
+        E-mail – gabinete.retomada@goias.gov.br
+        Atendimento presencial de segunda a sexta das 08h às 12h e 14h às 18h.
 
         ------------Exemplo 2
         [INPUTS]
-        `pedido_usuario`: "Onde fica o Palácio Pedro Ludovico?"
-        `texto_extraido`: "Home Fale Conosco...Palácio Pedro Ludovico Texeira Rua 82, nº 400 Ed. Palácio Pedro Ludovico Teixeira, 2º andar Setor Central, Goiânia/GO – CEP: 74.015-908 Atendimento: 08h às 12h e 14h às 18h..."
+        `pedido_usuario`: "Onde fica o Centro de convenções Oscar Niemeyer?"
+        `texto_extraido`: "Home Fale Conosco...Centro de convenções Oscar Niemeyer – CCONAv. Dep. Jamel Cecílio, km 01Goiânia–GO – CEP: 74891-135Tel.: 55 (62) 3030-1488 E-mail – ccon.retomada@goias.gov.brAtendimento presencial de segunda a sexta das 08h às 12h e 14h às 18h..."
 
         [SUA SAÍDA LITERAL E ÚNICA]
-        Palácio Pedro Ludovico Texeira:
-        Rua 82, nº 400 Ed. Palácio Pedro Ludovico Teixeira, 2º andar
-        Setor Central, Goiânia/GO – CEP: 74.015-908
-        Atendimento: 08h às 12h e 14h às 18h.
-        Mais informações em: https://goias.gov.br/retomada/fale-conosco/
+        Centro de convenções Oscar Niemeyer – CCON
+        Av. Dep. Jamel Cecílio, km 01
+        Goiânia–GO – CEP: 74891-135
+        Tel.: 55 (62) 3030-1488
+        E-mail – ccon.retomada@goias.gov.br
+        Atendimento presencial de segunda a sexta das 08h às 12h e 14h às 18h.
 
         ------------Exemplo 3
         [INPUTS]
@@ -59,11 +61,12 @@ agente_selecionador_enderecos = LlmAgent(
         `texto_extraido`: "Home Fale Conosco...Central Mais Empregos Avenida Araguaia, esquina com a Rua 15, Setor Central, Goiânia/GO – CEP: 74.110-130 WthasApp: (62) 98231-0070 Atendimento: 08h às 18h..."
 
         [SUA SAÍDA LITERAL E ÚNICA]
-        Central Mais Empregos:
-        Avenida Araguaia, esquina com a Rua 15,
-        Setor Central, Goiânia/GO – CEP: 74.110-130
-        Atendimento: 08h às 18h.
-        Mais informações em: https://goias.gov.br/retomada/fale-conosco/
+        Unidade Mais Emprego
+        Rua 15 C/Avenida Araguaia, Setor Central
+        Goiânia–GO – CEP: 74110-130
+        Tel.: 55 (62) 3030-1714
+        E-mail – supme.ser@goias.gov.br
+        Atendimento presencial de segunda a sexta das 08h às 12h e 14h às 18h.
 
         ---
         [EXEMPLO DA EXCEÇÃO]

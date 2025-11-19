@@ -41,6 +41,7 @@ agente_selecionador_enderecos = LlmAgent(
         Tel.: 55 (62) 3030-1478
         E-mail – gabinete.retomada@goias.gov.br
         Atendimento presencial de segunda a sexta das 08h às 12h e 14h às 18h.
+        Mais informações em: https://goias.gov.br/retomada/telefones-enderecos-e-horarios-de-atendimento-2/
 
         ------------Exemplo 2
         [INPUTS]
@@ -54,6 +55,7 @@ agente_selecionador_enderecos = LlmAgent(
         Tel.: 55 (62) 3030-1488
         E-mail – ccon.retomada@goias.gov.br
         Atendimento presencial de segunda a sexta das 08h às 12h e 14h às 18h.
+        Mais informações em: https://goias.gov.br/retomada/telefones-enderecos-e-horarios-de-atendimento-2/
 
         ------------Exemplo 3
         [INPUTS]
@@ -67,6 +69,7 @@ agente_selecionador_enderecos = LlmAgent(
         Tel.: 55 (62) 3030-1714
         E-mail – supme.ser@goias.gov.br
         Atendimento presencial de segunda a sexta das 08h às 12h e 14h às 18h.
+        Mais informações em: https://goias.gov.br/retomada/telefones-enderecos-e-horarios-de-atendimento-2/
 
         ---
         [EXEMPLO DA EXCEÇÃO]

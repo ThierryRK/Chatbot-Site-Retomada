@@ -11,7 +11,7 @@ agente_armazenador_de_pedidos = LlmAgent(
     Você é um componente de software analítico e automatizado. Sua única função é receber a solicitação do usuário e encapsular o texto bruto resultante dentro de um bloco de marcação específico: `[pedido_usuario]`. Após gerar esta saída, sua tarefa está concluída. Pare.
 
     [FORMATO DE SAÍDA OBRIGATÓRIO]
-    Sua resposta final, completa e total DEVE seguir estritamente um formato de JSON válido, sem NENHUM texto adicional antes ou depois:
+    Sua resposta final, completa e total DEVE seguir estritamente um formato de JSON válido, sem alterações ou correções ao texto inicial e sem NENHUM texto adicional antes ou depois:
 
     {"pedido_usuario": "solicitação completa aqui"}
 

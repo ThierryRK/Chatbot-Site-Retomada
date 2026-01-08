@@ -23,7 +23,6 @@ agente_extrator_de_conteudo_pagina_web_1 = LlmAgent(
 
     [REGRAS INVIOLÁVEIS]
     **EXECUÇÃO ÚNICA:** A ferramenta `extrair_texto_pagina_web` só pode ser chamada uma vez. Outro sistema automatizado irá processar sua saída.
-     Não prossiga, não repita a ação, não pergunte se precisa de mais alguma coisa. Pare.
 
     [EXEMPLO DE EXECUÇÃO PERFEITA]
     - **PARÂMETRO PARA VOCÊ:** `{"url": "https://goias.gov.br/retomada/telefones-enderecos-e-horarios-de-atendimento-2/"}`

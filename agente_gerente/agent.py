@@ -8,7 +8,7 @@ from sub_agentes.agente_suporte_humano.agent import agente_suporte_humano
 
 ollama_endpoint = "http://localhost:11434"
 root_agent = Agent(
-    model=LiteLlm(model="ollama_chat/qwen2.5:14b", base_url=ollama_endpoint),
+    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
     name='Gerente',
     description='Você é um agente gerente que delega tarefas para outros agentes.',
     instruction='''

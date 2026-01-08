@@ -5,7 +5,7 @@ from ferramentas.ferramentas import extrair_texto_pagina_web
 
 ollama_endpoint = "http://localhost:11434"
 agente_extrator_de_conteudo_pagina_web_1 = LlmAgent(
-    model=LiteLlm(model="ollama_chat/qwen2.5:14b", base_url=ollama_endpoint),
+    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
     name='agente_extrator_de_conteudo_pagina_web_1',
     description='Você é um agente que extrai conteúdo textual da URL fornecida.',
     instruction='''

@@ -9,7 +9,7 @@ from ferramentas.ferramentas import extrair_texto_pagina_web
 
 ollama_endpoint = "http://localhost:11434"
 agente_extrator_de_conteudo_pagina_web = LlmAgent(
-    model=LiteLlm(model="ollama_chat/qwen2.5:14b", base_url=ollama_endpoint),
+    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
     name='agente_extrator_de_conteudo_pagina_web',
     description='Você é um agente que extrai conteúdo textual de URLs fornecidas.',
     instruction='''
@@ -23,7 +23,6 @@ agente_extrator_de_conteudo_pagina_web = LlmAgent(
 
     [REGRAS INVIOLÁVEIS]
     **EXECUÇÃO ÚNICA:** A ferramenta `extrair_texto_pagina_web` só pode ser chamada uma vez. Outro sistema automatizado irá processar sua saída.
-     Não prossiga, não repita a ação, não pergunte se precisa de mais alguma coisa. Pare.
 
     [EXEMPLO DE EXECUÇÃO PERFEITA]
     - **INPUT PARA VOCÊ:** `{"url": "http://exemplo.com"}`

@@ -4,7 +4,7 @@ from google.adk.models.lite_llm import LiteLlm
 ollama_endpoint = "http://localhost:11434"
 agente_selecionador_enderecos = LlmAgent(
     model=
-    LiteLlm(model="ollama_chat/qwen2.5:14b", base_url=ollama_endpoint),
+    LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
     name='agente_selecionador_enderecos',
     description='Você é um agente que seleciona e exibe enderecos do conteúdo fornecido.',
     instruction='''

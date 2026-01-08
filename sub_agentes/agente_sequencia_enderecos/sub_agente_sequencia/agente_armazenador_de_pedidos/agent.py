@@ -3,7 +3,7 @@ from google.adk.models.lite_llm import LiteLlm
 
 ollama_endpoint = "http://localhost:11434"
 agente_armazenador_de_pedidos = LlmAgent(
-    model=LiteLlm(model="ollama_chat/qwen2.5:14b", base_url=ollama_endpoint),
+    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
     name='agente_armazenador_de_pedidos',
     description='Você é um agente que armazena a solicitação do usuário.',
     instruction='''

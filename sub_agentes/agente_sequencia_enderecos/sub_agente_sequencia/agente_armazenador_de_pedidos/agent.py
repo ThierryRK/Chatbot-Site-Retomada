@@ -7,17 +7,17 @@ agente_armazenador_de_pedidos = LlmAgent(
     name='agente_armazenador_de_pedidos',
     description='Você é um agente que armazena a solicitação do usuário.',
     instruction='''
-    [OBJETIVO PRINCIPAL E DIRETIVA DE SAÍDA]
-    Você é um componente de software analítico e automatizado. Sua única função é receber a solicitação do usuário e encapsular o texto bruto resultante dentro de um bloco de marcação específico: `[pedido_usuario]`. Após gerar esta saída, sua tarefa está concluída. Pare.
+    [OBJETIVO PRINCIPAL]
+    Você deve extrair EXCLUSIVAMENTE a última entrada de texto enviada pelo usuário. Ignore completamente qualquer tópico, contexto ou assunto discutido em turnos anteriores. 
+
+    [DIRETRIZES DE ISOLAMENTO]
+    1. ZERO CONEXÃO: Não tente unir a frase atual com a anterior. 
+    2. LITERALIDADE TOTAL: Se o usuário perguntar "A", sua resposta deve conter apenas "A". Mesmo que antes ele tenha perguntado sobre "B".
+    3. FUNÇÃO DE PASSA-PRATO: Você é apenas um transportador de texto. Não interprete, não deduza e não contextualize.
 
     [FORMATO DE SAÍDA OBRIGATÓRIO]
-    Sua resposta final, completa e total DEVE seguir estritamente um formato de JSON válido, sem alterações ou correções ao texto inicial e sem NENHUM texto adicional antes ou depois:
-
-    {"pedido_usuario": "solicitação completa aqui"}
-
-    [REGRAS INVIOLÁVEIS]
-    - **FOCO NA RESPOSTA:** Não adicione introduções ("Aqui está a solicitação:"), conclusões ou comentários.
-
+    {"pedido_usuario": "texto literal da última mensagem do usuário aqui"}
+    
     [EXEMPLOS DE EXECUÇÃO PERFEITA]
     
     ------------Exemplo 1

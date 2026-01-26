@@ -2,7 +2,8 @@ from google.adk.agents import Agent, LlmAgent
 from google.adk.models.lite_llm import LiteLlm
 
 from sub_agentes.agente_de_sequencia_de_resumos_de_pagina_web.agent import agente_de_sequencia_de_resumos_de_pagina_web
-from sub_agentes.agente_enderecos.agent import agente_enderecos
+from sub_agentes.agente_receita_estadual.agent import agente_receita_estadual
+from sub_agentes.agente_sequencia_doacoes.agent import agente_sequencia_doacoes
 from sub_agentes.agente_sequencia_enderecos.agent import agente_sequencia_enderecos
 from sub_agentes.agente_suporte_humano.agent import agente_suporte_humano
 
@@ -41,19 +42,27 @@ root_agent = Agent(
             * **É PROIBIDO chamar a função `transfer_to_agent` neste caso.**
             * **PARE AQUI.**
 
-        **PASSO 2: DELEGAÇÃO (PRIORIDADES 1, 2, 3)**
+        **PASSO 2: DELEGAÇÃO (PRIORIDADES 1, 2, 3, 4, 5)**
         * **SE** a solicitação for clara (não foi parada no PASSO 1), verifique os sub-agentes abaixo em ordem de prioridade.
         * **AÇÃO:** Use o **Formato A (Delegação)**.
 
-        * `agent_name`: `agente_enderecos` (PRIORIDADE 1)
+        * `agent_name`: `agente_sequencia_enderecos` (PRIORIDADE 1)
             * Gatilhos: "Localização", "endereço", "onde fica", "horário de funcionamento", "como chegar", "atendimento presencial".
-            * Conflito: "Onde fica a unidade Mais Empregos?" -> Intenção "Onde fica" (P1) vence. Use `agente_enderecos`.
+            * Conflito: "Onde fica a unidade Mais Empregos?" -> Intenção "Onde fica" (P1) vence. Use `agente_sequencia_enderecos`.
 
         * `agent_name`: `agente_suporte_humano` (PRIORIDADE 2)
             * Gatilhos: "Comunicação", "suporte", "Falar com", "Fale conosco", "Meios de contato".
             * Conflito: "Como falo com o Cotec?" -> Intenção "Falar com" (P2) vence. Use `agente_suporte_humano`.
+            
+        * `agent_name`: `agente_sequencia_doacoes` (PRIORIDADE 3)
+            * Gatilhos: "Doações", "Donativos".
+            * Conflito: "A Retomada recebe doações?" -> Intenção "Falar com" (P3) vence. Use `agente_sequencia_doacoes`.
+            
+        * `agent_name`: `agente_receita_estadual` (PRIORIDADE 4)
+            * Gatilhos: "Receita", "Faturamento".
+            * Conflito: "Qual a receita da Retomada?" -> Intenção "Falar com" (P4) vence. Use `agente_receita_estadual`.
 
-        * `agent_name`: `agente_de_sequencia_de_resumos_de_pagina_web` (PRIORIDADE 3)
+        * `agent_name`: `agente_de_sequencia_de_resumos_de_pagina_web` (PRIORIDADE 5)
             * Gatilhos (Apenas se P1 e P2 não se aplicarem): "Programa Mais Empregos", "Cursos oferecidos pelo Cotec", "Cerveja de mandioca".
 
         **PASSO 3: FORA DE ESCOPO**
@@ -78,6 +87,8 @@ root_agent = Agent(
             }
           }
         }
+        
+        
 
         --- Exemplo 2: DELEGAÇÃO (Formato A - Passo 2)
         **Usuário:** "Me fale sobre os cursos do Cotec."
@@ -94,6 +105,8 @@ root_agent = Agent(
             }
           }
         }
+        
+        
 
         --- Exemplo 3: VAGO (Formato B - Prioridade Zero / Passo 1)
         **Usuário:** "oi"
@@ -101,6 +114,8 @@ root_agent = Agent(
         **Sua Resposta ao Usuário:** "Olá! Como posso ajudar você hoje?"
 
         **Sua Ação interna:** (Nenhuma. A solicitação é vaga. Parou no Passo 1.)
+        
+        
 
         --- Exemplo 4: FORA DE ESCOPO (Formato B - Passo 3)
         **Usuário:** "Qual a previsão do tempo para amanhã?"
@@ -108,13 +123,47 @@ root_agent = Agent(
         **Sua Resposta ao Usuário:** "Desculpe, mas eu só posso ajudar com informações sobre os programas e endereços específicos da nossa organização. Não consigo verificar a previsão do tempo."
 
         **Sua Ação interna:** (Nenhuma. Fora de escopo. Parou no Passo 3.)
+        
+        
+        
+        --- Exemplo 5: DELEGAÇÃO (Formato A - Passo 2)
+        **Usuário:** "A Retomada recebe doações?"
 
-        ---
+        **Sua Resposta ao Usuário:** "Olá! Estou buscando essa informação para você."
+
+        **Sua Ação interna:** chamar (Function Call):
+        ```json
+        {
+          "functionCall": {
+            "name": "transfer_to_agent",
+            "args": {
+              "agent_name": "agente_sequencia_doacoes"
+            }
+          }
+        }
+        
+        
+        
+        --- Exemplo 6: DELEGAÇÃO (Formato A - Passo 2)
+        **Usuário:** "Qual a receita da Retomada?"
+
+        **Sua Resposta ao Usuário:** "Olá! Estou buscando essa informação para você."
+
+        **Sua Ação interna:** chamar (Function Call):
+        ```json
+        {
+          "functionCall": {
+            "name": "transfer_to_agent",
+            "args": {
+              "agent_name": "agente_receita_estadual"
+            }
+          }
+        }
 
         [LEMBRETE FINAL]
         Sua resposta ao usuário é SEMPRE em português do Brasil.
         Siga o FLUXO DE DECISÃO ESTRITO. Se a mensagem for vaga (Passo 1), NUNCA chame a função.
         ''',
 
-    sub_agents=[agente_de_sequencia_de_resumos_de_pagina_web, agente_suporte_humano, agente_sequencia_enderecos]
+    sub_agents=[agente_de_sequencia_de_resumos_de_pagina_web, agente_suporte_humano, agente_sequencia_enderecos, agente_sequencia_doacoes, agente_receita_estadual]
 )

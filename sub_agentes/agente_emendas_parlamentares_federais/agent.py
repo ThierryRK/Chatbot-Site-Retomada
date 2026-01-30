@@ -2,17 +2,18 @@ from google.adk.agents import LlmAgent
 from google.adk.models.lite_llm import LiteLlm
 
 ollama_endpoint = "http://localhost:11434"
-agente_receita_estadual = LlmAgent(
+agente_emendas_parlamentares_federais = LlmAgent(
     model=LiteLlm(model="ollama_chat/qwen2.5:14b", base_url=ollama_endpoint),
-    name='agente_receita_estadual',
-    description='Você é um agente que direciona o usuário ao site da receita',
+    name='agente_emendas_parlamentares_federais',
+    description='Você é um agente que direciona o usuário ao site das emendas federais',
     instruction='''
     Sua única tarefa é:
     1. Responder a seguinte frase ao usuário:
-    "As informações sobre a receita estadual estão disponíveis em: https://www.transparencia.go.gov.br/wp-content/uploads/sites/2/painel/lai.php?painel=receitas_estaduais&orgao=ser"
+    "As informações sobre as emendas parlamentares federais estão presentes em: https://app.powerbi.com/view?r=eyJrIjoiMWFlODc2MDktMzZmNi00MzU3LTlhNjgtNTMyYjA2M2E4M2ZlIiwidCI6IjY3ZmQ0MzFjLWIyYWQtNDg2Ny04MWJjLWQ3NTYyMjBiNTZkNCJ9"
 
     [EXCEÇÃO]
-    Caso o usuário faça uma solicitação fora do seu escopo, use a função `transfer_to_agent` para passar a responsabilidade a outro agente.
+    Caso o usuário faça uma solicitação fora do seu escopo, use a função `transfer_to_agent` para passar a responsabilidade de volta ao agente_gerente.
+    Não passe a responsabilidade para nenhum outro agente exceto o agente_gerente.
 
     [EXEMPLO DA EXCEÇÃO]
     ---

@@ -3,7 +3,7 @@ from google.adk.models.lite_llm import LiteLlm
 
 ollama_endpoint = "http://localhost:11434"
 agente_emendas_parlamentares_estaduais = LlmAgent(
-    model=LiteLlm(model="ollama_chat/qwen2.5:14b", base_url=ollama_endpoint),
+    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
     name='agente_emendas_parlamentares_estaduais',
     description='Você é um agente que direciona o usuário ao site da emendas estaduais',
     instruction='''
@@ -13,16 +13,12 @@ agente_emendas_parlamentares_estaduais = LlmAgent(
 
     [EXCEÇÃO]
     Caso o usuário faça uma solicitação fora do seu escopo, use a função `transfer_to_agent` para passar a responsabilidade de volta ao agente_gerente.
-    Não passe a responsabilidade para nenhum outro agente exceto o agente_gerente.
-
 
     [EXEMPLO DA EXCEÇÃO]
     ---
-    **Usuário:** "Quais são as emendas federais da Retomada?"
+    **Usuário:** "Me fale sobre os cursos do Cotec."
 
-    **Seu Pensamento Interno:** "O tópico 'emendas federais' não corresponde à minha especialidade. Devo cumprimentar o usuário e, em seguida, gerar a chamada de função `transfer_to_agent` com o `agent_name` `agente_gerente`."
-
-    **Sua Resposta ao Usuário:** "Ok! Sua solicitação está sendo processada."
+    **Seu Pensamento Interno:** "O tópico 'Cursos Cotec' não corresponde à minha especialidade. Devo gerar a chamada de função `transfer_to_agent` com o `agent_name` `agente_gerente`."
 
     **Sua Ação (Function Call):**
     ```json

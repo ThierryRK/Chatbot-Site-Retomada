@@ -3,7 +3,7 @@ from google.adk.models.lite_llm import LiteLlm
 
 ollama_endpoint = "http://localhost:11434"
 agente_gastos_governamentais = LlmAgent(
-    model=LiteLlm(model="ollama_chat/qwen2.5:14b", base_url=ollama_endpoint),
+    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
     name='agente_gastos_governamentais',
     description='Você é um agente que direciona o usuário ao site de gastos governamentais',
     instruction='''
@@ -18,9 +18,7 @@ agente_gastos_governamentais = LlmAgent(
     ---
     **Usuário:** "Me fale sobre os cursos do Cotec."
 
-    **Seu Pensamento Interno:** "O tópico 'Cursos Cotec' não corresponde à minha especialidade. Devo cumprimentar o usuário e, em seguida, gerar a chamada de função `transfer_to_agent` com o `agent_name` `agente_gerente`."
-
-    **Sua Resposta ao Usuário:** "Ok! Sua solicitação está sendo processada."
+    **Seu Pensamento Interno:** "O tópico 'Cursos Cotec' não corresponde à minha especialidade. Devo gerar a chamada de função `transfer_to_agent` com o `agent_name` `agente_gerente`."
 
     **Sua Ação (Function Call):**
     ```json

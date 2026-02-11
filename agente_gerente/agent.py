@@ -1,6 +1,9 @@
 from google.adk.agents import Agent, LlmAgent
 from google.adk.models.lite_llm import LiteLlm
 
+from sub_agentes.agente_acordos_sem_recursos.agent import agente_acordos_sem_recursos
+from sub_agentes.agente_convenios_concedidos.agent import agente_convenios_concedidos
+from sub_agentes.agente_convenios_recebidos.agent import agente_convenios_recebidos
 from sub_agentes.agente_de_sequencia_de_resumos_de_pagina_web.agent import agente_de_sequencia_de_resumos_de_pagina_web
 from sub_agentes.agente_emendas_parlamentares_estaduais.agent import agente_emendas_parlamentares_estaduais
 from sub_agentes.agente_emendas_parlamentares_federais.agent import agente_emendas_parlamentares_federais
@@ -10,6 +13,7 @@ from sub_agentes.agente_gastos_governamentais.agent import agente_gastos_governa
 from sub_agentes.agente_gastos_publicidade_propaganda.agent import agente_gastos_publicidade_propaganda
 from sub_agentes.agente_ordem_cronologica_pagamentos.agent import agente_ordem_cronologica_pagamentos
 from sub_agentes.agente_receita_estadual.agent import agente_receita_estadual
+from sub_agentes.agente_sequencia_chamamentos_publicos.agent import agente_sequencia_chamamentos_publicos
 from sub_agentes.agente_sequencia_doacoes.agent import agente_sequencia_doacoes
 from sub_agentes.agente_sequencia_enderecos.agent import agente_sequencia_enderecos
 from sub_agentes.agente_suporte_humano.agent import agente_suporte_humano
@@ -99,6 +103,20 @@ root_agent = Agent(
         * `agent_name`: `agente_ordem_cronologica_pagamentos` (PRIORIDADE 12)
             * Gatilhos: "Ordem de pagamentos".
             * Conflito: "Qual a ordem de pagamentos da Retomada?" -> Intenção "Falar com" (P12) vence. Use `agente_ordem_cronologica_pagamentos`.
+            
+        * `agent_name`: `agente_sequencia_chamamentos_publicos` (PRIORIDADE 13)
+            * Gatilhos: "Chamamentos públicos", "editais".
+            
+        * `agent_name`: `agente_acordos_sem_recursos` (PRIORIDADE 14)
+            * Gatilhos: "Acordo sem recursos".
+            
+        * `agent_name`: `agente_convenios_concedidos` (PRIORIDADE 15)
+            * Gatilhos: "Convênios concedidos".
+            * Conflito: "Onde vejo os convênios concedidos?" -> Intenção "Falar com" (P15) vence. Use `agente_convenios_concedidos`.
+            
+        * `agent_name`: `agente_convenios_recebidos` (PRIORIDADE 16)
+            * Gatilhos: "Convênios recebidos".
+            * Conflito: "Onde vejo os convênios recebidos?" -> Intenção "Falar com" (P16) vence. Use `agente_convenios_recebidos`.
 
         **PASSO 3: FORA DE ESCOPO**
         * **SE** a solicitação for clara (Passo 1), mas não se encaixar em P1, P2 ou P3:
@@ -202,5 +220,6 @@ root_agent = Agent(
 
     sub_agents=[agente_de_sequencia_de_resumos_de_pagina_web, agente_suporte_humano, agente_sequencia_enderecos, agente_sequencia_doacoes,
                 agente_receita_estadual, agente_emendas_parlamentares_estaduais, agente_emendas_parlamentares_federais, agente_empenhos_pagamentos,
-                agente_execucao_orcamentaria, agente_gastos_governamentais, agente_gastos_publicidade_propaganda, agente_ordem_cronologica_pagamentos]
+                agente_execucao_orcamentaria, agente_gastos_governamentais, agente_gastos_publicidade_propaganda, agente_ordem_cronologica_pagamentos,
+                agente_sequencia_chamamentos_publicos, agente_acordos_sem_recursos, agente_convenios_concedidos, agente_convenios_recebidos]
 )

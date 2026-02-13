@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
+import re
 
 app = Flask(__name__)
 CORS(app)  # Libera o acesso para o seu HTML de teste e WordPress
@@ -28,7 +29,7 @@ def chat():
     }
 
     try:
-        res = requests.post(url_run, json=payload)
+        res = requests.post(url_run, json=payload, timeout=1200)
 
         # 2. Se a sessão não existir (404), vamos criá-la
         if res.status_code == 404:
@@ -39,11 +40,40 @@ def chat():
 
         if res.status_code == 200:
             data = res.json()
-            # Extração segura da resposta
-            reply = data[0]['content']['parts'][0]['text']
-            return jsonify({"reply": reply})
-        else:
-            return jsonify({"reply": f"Erro no ADK: {res.status_code}"})
+            respostas_finais = []
+            conteudo_principal = ""
+
+            for evento in data:
+                parts = evento.get('content', {}).get('parts', [])
+                for part in parts:
+                    texto_bruto = part.get('text', '')
+                    if not texto_bruto: continue
+
+                    # Limpeza de JSON e ruídos
+                    texto_limpo = re.sub(r'```json.*?```', '', texto_bruto, flags=re.DOTALL)
+                    texto_limpo = re.sub(r'\{.*?".*?\}', '', texto_limpo, flags=re.DOTALL).strip()
+
+                    if not texto_limpo: continue
+
+                    # LÓGICA DE SEPARAÇÃO REVISADA:
+                    if "buscando" in texto_limpo.lower() or "consultar" in texto_limpo.lower():
+                        # Se for só um aviso, adiciona como balão separado
+                        if texto_limpo not in respostas_finais:
+                            respostas_finais.append(texto_limpo)
+                    else:
+                        # Se for a resposta real, vai acumulando tudo no conteúdo principal
+                        conteudo_principal += texto_limpo + " "
+
+            # Só adiciona o conteúdo principal se ele tiver algo substancial
+            if conteudo_principal.strip():
+                respostas_finais.append(conteudo_principal.strip())
+
+            # Se por algum motivo a lista estiver vazia mas o ADK deu 200
+            if not respostas_finais:
+                return jsonify({"replies": [
+                    "O processamento demorou muito, mas não retornou dados. Tente perguntar de outra forma."]}), 200
+
+            return jsonify({"replies": respostas_finais})
 
     except Exception as e:
         return jsonify({"reply": f"Erro de conexão: {str(e)}"}), 500

@@ -62,7 +62,7 @@ def chat():
                             respostas_finais.append(texto_limpo)
                     else:
                         # Se for a resposta real, vai acumulando tudo no conteúdo principal
-                        conteudo_principal += texto_limpo + " "
+                        conteudo_principal += texto_limpo + "\n"
 
             # Só adiciona o conteúdo principal se ele tiver algo substancial
             if conteudo_principal.strip():

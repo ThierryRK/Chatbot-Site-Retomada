@@ -89,13 +89,49 @@
         }
     }
 
-    function appendMessage(sender, text) {
+    function formatMessage(text) {
+        if (!text) return '';
+
+        let formatted = text;
+
+        // 1. Limpa links duplicados do Markdown [link](link) mantendo apenas o link
+        // Isso remove o padrão [https://...](https://...)
+        formatted = formatted.replace(/\[(https?:\/\/[^\s\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '$1');
+
+        // 2. Converte URLs simples em links clicáveis
+        // (Evita duplicar se já houver tags <a>)
+        formatted = formatted.replace(
+            /(?<!["=>])((https?:\/\/)[^\s]+)/g,
+            '<a href="$1" target="_blank" style="color: #1a73e8; text-decoration: underline;">$1</a>'
+        );
+
+        // 3. Converte **negrito** em <strong>
+        formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+        // 4. Converte quebras de linha em <br>
+        formatted = formatted.replace(/\n/g, '<br>');
+
+        // 5. Remove colchetes ou parênteses que sobraram grudados no link (opcional)
+        formatted = formatted.replace(/\]\(|\)\]/g, '');
+
+        return formatted;
+}
+
+    function appendMessage(sender, text, id = null) {
         const div = document.createElement('div');
         div.classList.add('msg', sender);
-        div.innerText = text;
+        if (id) div.id = id;
+
+        // Se for o bot, processa o HTML. Se for o usuário, mantém texto puro por segurança.
+        if (sender === 'bot') {
+            div.innerHTML = formatMessage(text);
+        } else {
+            div.innerText = text;
+        }
+
         messagesContainer.appendChild(div);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
+}
 
     sendBtn.onclick = sendMessage;
     userInput.onkeypress = (e) => { if(e.key === 'Enter') sendMessage(); };

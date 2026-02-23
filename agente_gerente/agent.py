@@ -16,7 +16,7 @@ from sub_agentes.agente_receita_estadual.agent import agente_receita_estadual
 from sub_agentes.agente_sequencia_chamamentos_publicos.agent import agente_sequencia_chamamentos_publicos
 from sub_agentes.agente_sequencia_doacoes.agent import agente_sequencia_doacoes
 from sub_agentes.agente_sequencia_enderecos.agent import agente_sequencia_enderecos
-from sub_agentes.agente_suporte_humano.agent import agente_suporte_humano
+from sub_agentes.agente_sequencia_meio_comunicacao.agent import agente_sequencia_meio_comunicacao
 
 ollama_endpoint = "http://localhost:11434"
 root_agent = Agent(
@@ -61,9 +61,9 @@ root_agent = Agent(
             * Gatilhos: "Localização", "endereço", "onde fica", "horário de funcionamento", "como chegar", "atendimento presencial".
             * Conflito: "Onde fica a unidade Mais Empregos?" -> Intenção "Onde fica" (P1) vence. Use `agente_sequencia_enderecos`.
 
-        * `agent_name`: `agente_suporte_humano` (PRIORIDADE 2)
-            * Gatilhos: "Comunicação", "suporte", "Falar com", "Fale conosco", "Meios de contato".
-            * Conflito: "Como falo com o Cotec?" -> Intenção "Falar com" (P2) vence. Use `agente_suporte_humano`.
+        * `agent_name`: `agente_sequencia_meio_comunicacao` (PRIORIDADE 2)
+            * Gatilhos: "Comunicação", "suporte", "Falar com", "Fale conosco", "Meios de contato", "Número", "Email".
+            * Conflito: "Como falo com o mais empregos?" -> Intenção "Falar com" (P2) vence. Use `agente_sequencia_meio_comunicacao`.
             
         * `agent_name`: `agente_sequencia_doacoes` (PRIORIDADE 3)
             * Gatilhos: "Doações", "Donativos".
@@ -218,7 +218,7 @@ root_agent = Agent(
         Siga o FLUXO DE DECISÃO ESTRITO. Se a mensagem for vaga (Passo 1), NUNCA chame a função.
         ''',
 
-    sub_agents=[agente_de_sequencia_de_resumos_de_pagina_web, agente_suporte_humano, agente_sequencia_enderecos, agente_sequencia_doacoes,
+    sub_agents=[agente_de_sequencia_de_resumos_de_pagina_web, agente_sequencia_meio_comunicacao, agente_sequencia_enderecos, agente_sequencia_doacoes,
                 agente_receita_estadual, agente_emendas_parlamentares_estaduais, agente_emendas_parlamentares_federais, agente_empenhos_pagamentos,
                 agente_execucao_orcamentaria, agente_gastos_governamentais, agente_gastos_publicidade_propaganda, agente_ordem_cronologica_pagamentos,
                 agente_sequencia_chamamentos_publicos, agente_acordos_sem_recursos, agente_convenios_concedidos, agente_convenios_recebidos]

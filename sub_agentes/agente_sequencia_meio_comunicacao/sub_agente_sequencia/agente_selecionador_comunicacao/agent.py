@@ -2,14 +2,14 @@ from google.adk.agents import LlmAgent
 from google.adk.models.lite_llm import LiteLlm
 
 ollama_endpoint = "http://localhost:11434"
-agente_selecionador_enderecos = LlmAgent(
+agente_selecionador_comunicacao = LlmAgent(
     model=
     LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
-    name='agente_selecionador_enderecos',
-    description='Você é um agente que seleciona e exibe enderecos do conteúdo fornecido.',
+    name='agente_selecionador_comunicacao',
+    description='Você é um agente que seleciona e exibe meios de comunicação do conteúdo fornecido.',
     instruction='''
         [OBJETIVO PRINCIPAL]
-        Você é um componente de software automatizado. Sua única função é receber um `pedido_usuario` e um `texto_extraido`. Você DEVE localizar as informações solicitadas (endereço, CEP, horário) dentro do `texto_extraido` e retorná-las no formato exato especificado.
+        Você é um componente de software automatizado. Sua única função é receber um `pedido_usuario` e um `texto_extraido`. Você DEVE localizar as informações solicitadas (meios de comunicação) dentro do `texto_extraido` e retorná-las no formato exato especificado.
 
         [FORMATO DE SAÍDA OBRIGATÓRIO]
         Sua resposta final, completa e total DEVE seguir estritamente este formato, sem NENHUM texto adicional antes ou depois.
@@ -31,38 +31,35 @@ agente_selecionador_enderecos = LlmAgent(
 
         ------------Exemplo 1
         [INPUTS]
-        `pedido_usuario`: "Qual o endereço do Gabinete da Retomada?"
+        `pedido_usuario`: "Como falo com o Gabinete da Retomada?"
         `texto_extraido`: "Home Fale Conosco...Gabinete do Secretario de Estado da RetomadaPraça Pedro Ludovico Teixeira, Rua 82, n.º03, Setor Central Goiânia–GO – CEP: 74003-010Tel.: 55 (62) 3030-1478 E-mail – gabinete.retomada@goias.gov.brAtendimento presencial de segunda a sexta das 08h às 12h e 14h às 18h..."
 
         [SUA SAÍDA LITERAL E ÚNICA]
         Gabinete do Secretario de Estado da Retomada
-        Praça Pedro Ludovico Teixeira, Rua 82, n.º03, Setor Central
-        Goiânia–GO – CEP: 74003-010
-        Atendimento presencial de segunda a sexta das 08h às 12h e 14h às 18h.
+        Tel.: 55 (62) 3030-1478
+        E-mail – gabinete.retomada@goias.gov.br
         Mais informações em: https://goias.gov.br/retomada/telefones-enderecos-e-horarios-de-atendimento-2/
 
         ------------Exemplo 2
         [INPUTS]
-        `pedido_usuario`: "Onde fica o Centro de convenções Oscar Niemeyer?"
+        `pedido_usuario`: "Onde contato o CCON?"
         `texto_extraido`: "Home Fale Conosco...Centro de convenções Oscar Niemeyer – CCONAv. Dep. Jamel Cecílio, km 01Goiânia–GO – CEP: 74891-135Tel.: 55 (62) 3030-1488 E-mail – ccon.retomada@goias.gov.brAtendimento presencial de segunda a sexta das 08h às 12h e 14h às 18h..."
 
         [SUA SAÍDA LITERAL E ÚNICA]
         Centro de convenções Oscar Niemeyer – CCON
-        Av. Dep. Jamel Cecílio, km 01
-        Goiânia–GO – CEP: 74891-135
-        Atendimento presencial de segunda a sexta das 08h às 12h e 14h às 18h.
+        Tel.: 55 (62) 3030-1488
+        E-mail – ccon.retomada@goias.gov.br
         Mais informações em: https://goias.gov.br/retomada/telefones-enderecos-e-horarios-de-atendimento-2/
 
         ------------Exemplo 3
         [INPUTS]
-        `pedido_usuario`: "Onde fica o Mais Empregos?"
+        `pedido_usuario`: "Como falo com o Mais Empregos?"
         `texto_extraido`: "Home Fale Conosco...Central Mais Empregos Avenida Araguaia, esquina com a Rua 15, Setor Central, Goiânia/GO – CEP: 74.110-130 WthasApp: (62) 98231-0070 Atendimento: 08h às 18h..."
 
         [SUA SAÍDA LITERAL E ÚNICA]
         Unidade Mais Emprego
-        Rua 15 C/Avenida Araguaia, Setor Central
-        Goiânia–GO – CEP: 74110-130
-        Atendimento presencial de segunda a sexta das 08h às 12h e 14h às 18h.
+        Tel.: 55 (62) 3030-1714
+        E-mail – supme.ser@goias.gov.br
         Mais informações em: https://goias.gov.br/retomada/telefones-enderecos-e-horarios-de-atendimento-2/
 
         ---

@@ -68,3 +68,4 @@ def extrair_texto_pagina_web(url: str) -> dict:
 #if texto:
 #    print("Texto extraído com sucesso!")
 #    print(texto)
+#    print("Fim do texto")

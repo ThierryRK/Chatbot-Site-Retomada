@@ -1,18 +1,22 @@
-from google.adk.agents import Agent, LlmAgent
+from google.adk.agents import Agent
 from google.adk.models.lite_llm import LiteLlm
 
 from sub_agentes.agente_acordos_sem_recursos.agent import agente_acordos_sem_recursos
 from sub_agentes.agente_convenios_concedidos.agent import agente_convenios_concedidos
 from sub_agentes.agente_convenios_recebidos.agent import agente_convenios_recebidos
 from sub_agentes.agente_de_sequencia_de_resumos_de_pagina_web.agent import agente_de_sequencia_de_resumos_de_pagina_web
+from sub_agentes.agente_diarias.agent import agente_diarias
 from sub_agentes.agente_emendas_parlamentares_estaduais.agent import agente_emendas_parlamentares_estaduais
 from sub_agentes.agente_emendas_parlamentares_federais.agent import agente_emendas_parlamentares_federais
 from sub_agentes.agente_empenhos_pagamentos.agent import agente_empenhos_pagamentos
 from sub_agentes.agente_execucao_orcamentaria.agent import agente_execucao_orcamentaria
+from sub_agentes.agente_folha_de_pagamento.agent import agente_folha_de_pagamento
 from sub_agentes.agente_gastos_governamentais.agent import agente_gastos_governamentais
 from sub_agentes.agente_gastos_publicidade_propaganda.agent import agente_gastos_publicidade_propaganda
+from sub_agentes.agente_lista_estagiarios.agent import agente_lista_estagiarios
 from sub_agentes.agente_ordem_cronologica_pagamentos.agent import agente_ordem_cronologica_pagamentos
 from sub_agentes.agente_receita_estadual.agent import agente_receita_estadual
+from sub_agentes.agente_relacao_de_tercerizados.agent import agente_relacao_de_tercerizados
 from sub_agentes.agente_sequencia_chamamentos_publicos.agent import agente_sequencia_chamamentos_publicos
 from sub_agentes.agente_sequencia_doacoes.agent import agente_sequencia_doacoes
 from sub_agentes.agente_sequencia_enderecos.agent import agente_sequencia_enderecos
@@ -117,6 +121,22 @@ root_agent = Agent(
         * `agent_name`: `agente_convenios_recebidos` (PRIORIDADE 16)
             * Gatilhos: "Convênios recebidos".
             * Conflito: "Onde vejo os convênios recebidos?" -> Intenção "Falar com" (P16) vence. Use `agente_convenios_recebidos`.
+            
+        * `agent_name`: `agente_diarias` (PRIORIDADE 17)
+            * Gatilhos: "Diárias".
+            * Conflito: "Onde vejo as diárias?" -> Intenção "Falar com" (P17) vence. Use `agente_diarias`.
+            
+        * `agent_name`: `agente_folha_de_pagamento` (PRIORIDADE 18)
+            * Gatilhos: "Folha de pagamento".
+            * Conflito: "Onde vejo a folha de pagamento?" -> Intenção "Falar com" (P18) vence. Use `agente_folha_de_pagamento`.
+            
+        * `agent_name`: `agente_lista_estagiarios` (PRIORIDADE 19)
+            * Gatilhos: "Lista de estagiários".
+            * Conflito: "Onde vejo a lista de estagiários?" -> Intenção "Falar com" (P19) vence. Use `agente_lista_estagiarios`.
+            
+        * `agent_name`: `agente_relacao_de_tercerizados` (PRIORIDADE 20)
+            * Gatilhos: "Relação de tercerizados", "Tercerizados".
+            * Conflito: "Onde vejo a relação de tercerizados?" -> Intenção "Falar com" (P20) vence. Use `agente_relacao_de_tercerizados`.
 
         **PASSO 3: FORA DE ESCOPO**
         * **SE** a solicitação for clara (Passo 1), mas não se encaixar em P1, P2 ou P3:
@@ -221,5 +241,6 @@ root_agent = Agent(
     sub_agents=[agente_de_sequencia_de_resumos_de_pagina_web, agente_sequencia_meio_comunicacao, agente_sequencia_enderecos, agente_sequencia_doacoes,
                 agente_receita_estadual, agente_emendas_parlamentares_estaduais, agente_emendas_parlamentares_federais, agente_empenhos_pagamentos,
                 agente_execucao_orcamentaria, agente_gastos_governamentais, agente_gastos_publicidade_propaganda, agente_ordem_cronologica_pagamentos,
-                agente_sequencia_chamamentos_publicos, agente_acordos_sem_recursos, agente_convenios_concedidos, agente_convenios_recebidos]
+                agente_sequencia_chamamentos_publicos, agente_acordos_sem_recursos, agente_convenios_concedidos, agente_convenios_recebidos,
+                agente_diarias, agente_folha_de_pagamento, agente_lista_estagiarios, agente_relacao_de_tercerizados]
 )

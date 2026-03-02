@@ -1,7 +1,11 @@
 from google.adk.agents import Agent
 from google.adk.models.lite_llm import LiteLlm
 
+from sub_agentes.agente_PCA.agent import agente_PCA
+from sub_agentes.agente_PNCP.agent import agente_PNCP
+from sub_agentes.agente_SISLOG.agent import agente_SISLOG
 from sub_agentes.agente_acordos_sem_recursos.agent import agente_acordos_sem_recursos
+from sub_agentes.agente_comprasnet.agent import agente_comprasnet
 from sub_agentes.agente_convenios_concedidos.agent import agente_convenios_concedidos
 from sub_agentes.agente_convenios_recebidos.agent import agente_convenios_recebidos
 from sub_agentes.agente_de_sequencia_de_resumos_de_pagina_web.agent import agente_de_sequencia_de_resumos_de_pagina_web
@@ -13,6 +17,9 @@ from sub_agentes.agente_execucao_orcamentaria.agent import agente_execucao_orcam
 from sub_agentes.agente_folha_de_pagamento.agent import agente_folha_de_pagamento
 from sub_agentes.agente_gastos_governamentais.agent import agente_gastos_governamentais
 from sub_agentes.agente_gastos_publicidade_propaganda.agent import agente_gastos_publicidade_propaganda
+from sub_agentes.agente_licitacoes_SISLOG.agent import agente_licitacoes_SISLOG
+from sub_agentes.agente_licitacoes_comprasnet.agent import agente_licitacoes_comprasnet
+from sub_agentes.agente_licitantes_sancionados.agent import agente_licitantes_sancionados
 from sub_agentes.agente_lista_estagiarios.agent import agente_lista_estagiarios
 from sub_agentes.agente_ordem_cronologica_pagamentos.agent import agente_ordem_cronologica_pagamentos
 from sub_agentes.agente_receita_estadual.agent import agente_receita_estadual
@@ -137,6 +144,35 @@ root_agent = Agent(
         * `agent_name`: `agente_relacao_de_tercerizados` (PRIORIDADE 20)
             * Gatilhos: "Relação de tercerizados", "Tercerizados".
             * Conflito: "Onde vejo a relação de tercerizados?" -> Intenção "Falar com" (P20) vence. Use `agente_relacao_de_tercerizados`.
+            
+        * `agent_name`: `agente_comprasnet` (PRIORIDADE 21)
+            * Gatilhos: "ComprasNet".
+            * Conflito: "Onde vejo o ComprasNet?" -> Intenção "Falar com" (P21) vence. Use `agente_comprasnet`.
+            
+        * `agent_name`: `agente_licitacoes_comprasnet` (PRIORIDADE 22)
+            * Gatilhos: "Licitações ComprasNet".
+            * Conflito: "Onde vejo as licitações da ComprasNet?" -> Intenção "Falar com" (P22) vence. Use `agente_licitacoes_comprasnet`.
+            
+        * `agent_name`: `agente_licitacoes_SISLOG` (PRIORIDADE 23)
+            * Gatilhos: "Licitações SISLOG".
+            * Conflito: "Onde vejo as licitações da SISLOG?" -> Intenção "Falar com" (P23) vence. Use `agente_licitacoes_SISLOG`.
+            
+        * `agent_name`: `agente_licitantes_sancionados` (PRIORIDADE 24)
+            * Gatilhos: "Licitantes sancionados".
+            * Conflito: "Onde vejo os licitantes sancionados?" -> Intenção "Falar com" (P24) vence. Use `agente_licitantes_sancionados`.
+            
+        * `agent_name`: `agente_PCA` (PRIORIDADE 25)
+            * Gatilhos: "PCA", "Plano de contratações anual".
+            * Conflito: "Onde vejo o PCA?" -> Intenção "Falar com" (P25) vence. Use `agente_PCA`.
+            
+        * `agent_name`: `agente_PNCP` (PRIORIDADE 26)
+            * Gatilhos: "PNCP", "Portal nacional de contratações públicas".
+            * Conflito: "Onde vejo o PNCP?" -> Intenção "Falar com" (P26) vence. Use `agente_PNCP`.
+            
+        * `agent_name`: `agente_SISLOG` (PRIORIDADE 27)
+            * Gatilhos: "SISLOG".
+            * Conflito: "Onde vejo o SISLOG?" -> Intenção "Falar com" (P27) vence. Use `agente_SISLOG`.
+            
 
         **PASSO 3: FORA DE ESCOPO**
         * **SE** a solicitação for clara (Passo 1), mas não se encaixar em P1, P2 ou P3:
@@ -242,5 +278,6 @@ root_agent = Agent(
                 agente_receita_estadual, agente_emendas_parlamentares_estaduais, agente_emendas_parlamentares_federais, agente_empenhos_pagamentos,
                 agente_execucao_orcamentaria, agente_gastos_governamentais, agente_gastos_publicidade_propaganda, agente_ordem_cronologica_pagamentos,
                 agente_sequencia_chamamentos_publicos, agente_acordos_sem_recursos, agente_convenios_concedidos, agente_convenios_recebidos,
-                agente_diarias, agente_folha_de_pagamento, agente_lista_estagiarios, agente_relacao_de_tercerizados]
+                agente_diarias, agente_folha_de_pagamento, agente_lista_estagiarios, agente_relacao_de_tercerizados, agente_comprasnet,
+                agente_licitacoes_comprasnet, agente_licitacoes_SISLOG, agente_licitantes_sancionados, agente_PCA, agente_PNCP, agente_SISLOG]
 )

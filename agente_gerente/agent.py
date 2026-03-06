@@ -8,7 +8,7 @@ from sub_agentes.agente_acordos_sem_recursos.agent import agente_acordos_sem_rec
 from sub_agentes.agente_comprasnet.agent import agente_comprasnet
 from sub_agentes.agente_convenios_concedidos.agent import agente_convenios_concedidos
 from sub_agentes.agente_convenios_recebidos.agent import agente_convenios_recebidos
-from sub_agentes.agente_de_sequencia_de_resumos_de_pagina_web.agent import agente_de_sequencia_de_resumos_de_pagina_web
+from sub_agentes.agente_sequencia_resumo_pagina_web.agent import agente_sequencia_resumo_pagina_web
 from sub_agentes.agente_diarias.agent import agente_diarias
 from sub_agentes.agente_emendas_parlamentares_estaduais.agent import agente_emendas_parlamentares_estaduais
 from sub_agentes.agente_emendas_parlamentares_federais.agent import agente_emendas_parlamentares_federais
@@ -31,7 +31,16 @@ from sub_agentes.agente_sequencia_meio_comunicacao.agent import agente_sequencia
 
 ollama_endpoint = "http://localhost:11434"
 root_agent = Agent(
-    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
+    model=LiteLlm(
+        model="ollama_chat/ministral-3:14b",
+        base_url=ollama_endpoint,
+        # Adicione as linhas abaixo para controlar a VRAM
+        completion_args={
+            "options": {
+                "num_ctx": 8192  # Limita o contexto a 8k tokens, economizando sua GPU
+            }
+        }
+    ),
     name='Gerente',
     description='Você é um agente gerente que delega tarefas para outros agentes.',
     instruction='''
@@ -274,7 +283,7 @@ root_agent = Agent(
         Siga o FLUXO DE DECISÃO ESTRITO. Se a mensagem for vaga (Passo 1), NUNCA chame a função.
         ''',
 
-    sub_agents=[agente_de_sequencia_de_resumos_de_pagina_web, agente_sequencia_meio_comunicacao, agente_sequencia_enderecos, agente_sequencia_doacoes,
+    sub_agents=[agente_sequencia_resumo_pagina_web, agente_sequencia_meio_comunicacao, agente_sequencia_enderecos, agente_sequencia_doacoes,
                 agente_receita_estadual, agente_emendas_parlamentares_estaduais, agente_emendas_parlamentares_federais, agente_empenhos_pagamentos,
                 agente_execucao_orcamentaria, agente_gastos_governamentais, agente_gastos_publicidade_propaganda, agente_ordem_cronologica_pagamentos,
                 agente_sequencia_chamamentos_publicos, agente_acordos_sem_recursos, agente_convenios_concedidos, agente_convenios_recebidos,

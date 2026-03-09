@@ -9,7 +9,16 @@ from ferramentas.ferramentas import extrair_texto_pagina_web
 
 ollama_endpoint = "http://localhost:11434"
 agente_extrator_de_conteudo_pagina_web = LlmAgent(
-    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
+    model=LiteLlm(
+        model="ollama_chat/ministral-3:14b",
+        base_url=ollama_endpoint,
+        # Adicione as linhas abaixo para controlar a VRAM
+        completion_args={
+            "options": {
+                "num_ctx": 8192  # Limita o contexto a 8k tokens, economizando sua GPU
+            }
+        }
+    ),
     name='agente_extrator_de_conteudo_pagina_web_2',
     description='Extrai texto de URLs e retorna JSON.',
     instruction='''

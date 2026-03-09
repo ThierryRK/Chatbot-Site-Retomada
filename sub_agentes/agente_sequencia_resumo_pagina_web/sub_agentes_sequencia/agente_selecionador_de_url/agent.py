@@ -8,7 +8,16 @@ from pydantic import BaseModel, Field
 
 ollama_endpoint = "http://localhost:11434"
 agente_selecionador_de_url = LlmAgent(
-    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
+    model=LiteLlm(
+        model="ollama_chat/ministral-3:14b",
+        base_url=ollama_endpoint,
+        # Adicione as linhas abaixo para controlar a VRAM
+        completion_args={
+            "options": {
+                "num_ctx": 8192  # Limita o contexto a 8k tokens, economizando sua GPU
+            }
+        }
+    ),
     name='agente_selecionador_de_url',
     description='Você é um agente que seleciona os url.',
     instruction='''

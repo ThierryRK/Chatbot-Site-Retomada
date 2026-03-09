@@ -3,9 +3,16 @@ from google.adk.models.lite_llm import LiteLlm
 
 ollama_endpoint = "http://localhost:11434"
 agente_selecionador_enderecos = LlmAgent(
-    model=
-    LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
-    name='agente_selecionador_enderecos',
+    model=LiteLlm(
+        model="ollama_chat/ministral-3:14b",
+        base_url=ollama_endpoint,
+        # Adicione as linhas abaixo para controlar a VRAM
+        completion_args={
+            "options": {
+                "num_ctx": 8192  # Limita o contexto a 8k tokens, economizando sua GPU
+            }
+        }
+    ),    name='agente_selecionador_enderecos',
     description='Você é um agente que seleciona e exibe enderecos do conteúdo fornecido.',
     instruction='''
         [OBJETIVO PRINCIPAL]

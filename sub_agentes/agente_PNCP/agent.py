@@ -3,8 +3,16 @@ from google.adk.models.lite_llm import LiteLlm
 
 ollama_endpoint = "http://localhost:11434"
 agente_PNCP = LlmAgent(
-    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
-    name='agente_PNCP',
+    model=LiteLlm(
+        model="ollama_chat/ministral-3:14b",
+        base_url=ollama_endpoint,
+        # Adicione as linhas abaixo para controlar a VRAM
+        completion_args={
+            "options": {
+                "num_ctx": 8192  # Limita o contexto a 8k tokens, economizando sua GPU
+            }
+        }
+    ),    name='agente_PNCP',
     description='Você é um agente que direciona o usuário à página Portal Nacional de Contratações Públicas - PNCP',
     instruction='''
     Sua única tarefa é:

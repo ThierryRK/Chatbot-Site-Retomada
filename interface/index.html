@@ -1,7 +1,7 @@
 <div id="gemini-chat-container">
     <div id="chat-window" class="chat-hidden">
         <div id="chat-header">
-            <span>Assistente IA</span>
+            <span>Assistente Retomada</span>
             <button onclick="toggleChat()">×</button>
         </div>
         <div id="chat-messages"></div>
@@ -20,7 +20,7 @@
     #gemini-chat-container { font-family: sans-serif; z-index: 9999; position: relative; }
     #chat-button {
         position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px;
-        background: #4285f4; border-radius: 50%; display: flex; align-items: center;
+        background: #009f3b; border-radius: 50%; display: flex; align-items: center;
         justify-content: center; color: white; cursor: pointer; font-size: 30px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
@@ -31,7 +31,7 @@
         transition: all 0.3s ease;
     }
     .chat-hidden { display: none !important; }
-    #chat-header { background: #4285f4; color: white; padding: 15px; display: flex; justify-content: space-between; font-weight: bold; }
+    #chat-header { background: #009f3b; color: white; padding: 15px; display: flex; justify-content: space-between; font-weight: bold; }
     #chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
     .msg { padding: 8px 12px; border-radius: 10px; max-width: 80%; }
     .user { align-self: flex-end; background: #e3effd; color: #1a73e8; }

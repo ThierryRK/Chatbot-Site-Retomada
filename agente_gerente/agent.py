@@ -6,8 +6,16 @@ from sub_agentes.agente_PNCP.agent import agente_PNCP
 from sub_agentes.agente_SISLOG.agent import agente_SISLOG
 from sub_agentes.agente_acordos_sem_recursos.agent import agente_acordos_sem_recursos
 from sub_agentes.agente_comprasnet.agent import agente_comprasnet
+from sub_agentes.agente_contratos.agent import agente_contratos
+from sub_agentes.agente_contratos_emergenciais.agent import agente_contratos_emergenciais
+from sub_agentes.agente_contratos_locacao_imoveis.agent import agente_contratos_locacao_imoveis
 from sub_agentes.agente_convenios_concedidos.agent import agente_convenios_concedidos
 from sub_agentes.agente_convenios_recebidos.agent import agente_convenios_recebidos
+from sub_agentes.agente_obras.agent import agente_obras
+from sub_agentes.agente_obras_audiencias_consultas_publicas.agent import agente_obras_audiencias_consultas_publicas
+from sub_agentes.agente_obras_paralisadas.agent import agente_obras_paralisadas
+from sub_agentes.agente_parceria_OSCs.agent import agente_parceria_OSCs
+from sub_agentes.agente_relacao_fiscais_contratos.agent import agente_relacao_fiscais_contratos
 from sub_agentes.agente_sequencia_resumo_pagina_web.agent import agente_sequencia_resumo_pagina_web
 from sub_agentes.agente_diarias.agent import agente_diarias
 from sub_agentes.agente_emendas_parlamentares_estaduais.agent import agente_emendas_parlamentares_estaduais
@@ -182,6 +190,38 @@ root_agent = Agent(
             * Gatilhos: "SISLOG".
             * Conflito: "Onde vejo o SISLOG?" -> Intenção "Falar com" (P27) vence. Use `agente_SISLOG`.
             
+        * `agent_name`: `agente_contratos` (PRIORIDADE 28)
+            * Gatilhos: "contratos".
+            * Conflito: "Onde vejo os contratos?" -> Intenção "Falar com" (P28) vence. Use `agente_contratos`.
+            
+        * `agent_name`: `agente_contratos_emergenciais` (PRIORIDADE 29)
+            * Gatilhos: "contratos emergenciais".
+            * Conflito: "Onde vejo os contratos emergenciais?" -> Intenção "Falar com" (P29) vence. Use `agente_contratos_emergenciais`.
+            
+        * `agent_name`: `agente_relacao_fiscais_contratos` (PRIORIDADE 30)
+            * Gatilhos: "relação dos fiscais dos contratos".
+            * Conflito: "Onde vejo a relação dos fiscais dos contratos?" -> Intenção "Falar com" (P30) vence. Use `agente_relacao_fiscais_contratos`.
+            
+        * `agent_name`: `agente_contratos_locacao_imoveis` (PRIORIDADE 31)
+            * Gatilhos: "contratos de locação de imóveis".
+            * Conflito: "Onde vejo os contratos de locação de imóveis?" -> Intenção "Falar com" (P31) vence. Use `agente_contratos_locacao_imoveis`.
+            
+        * `agent_name`: `agente_parceria_OSCs` (PRIORIDADE 32)
+            * Gatilhos: "parceria com OSCs","OSCs".
+            * Conflito: "Onde vejo a parceria com OSCs?" -> Intenção "Falar com" (P32) vence. Use `agente_parceria_OSCs`.
+            
+        * `agent_name`: `agente_obras` (PRIORIDADE 33)
+            * Gatilhos: "obras".
+            * Conflito: "Onde vejo as obras?" -> Intenção "Falar com" (P33) vence. Use `agente_obras`.
+            
+        * `agent_name`: `agente_obras_paralisadas` (PRIORIDADE 34)
+            * Gatilhos: "obras paralisadas".
+            * Conflito: "Onde vejo as obras paralisadas?" -> Intenção "Falar com" (P34) vence. Use `agente_obras_paralisadas`.
+            
+        * `agent_name`: `agente_obras_audiencias_consultas_publicas` (PRIORIDADE 35)
+            * Gatilhos: "audiências das obras", "consultas públicas das obras".
+            * Conflito: "Onde vejo as audiências e consultas públicas das obras?" -> Intenção "Falar com" (P35) vence. Use `agente_obras_audiencias_consultas_publicas`.
+            
 
         **PASSO 3: FORA DE ESCOPO**
         * **SE** a solicitação for clara (Passo 1), mas não se encaixar em P1, P2 ou P3:
@@ -288,5 +328,7 @@ root_agent = Agent(
                 agente_execucao_orcamentaria, agente_gastos_governamentais, agente_gastos_publicidade_propaganda, agente_ordem_cronologica_pagamentos,
                 agente_sequencia_chamamentos_publicos, agente_acordos_sem_recursos, agente_convenios_concedidos, agente_convenios_recebidos,
                 agente_diarias, agente_folha_de_pagamento, agente_lista_estagiarios, agente_relacao_de_tercerizados, agente_comprasnet,
-                agente_licitacoes_comprasnet, agente_licitacoes_SISLOG, agente_licitantes_sancionados, agente_PCA, agente_PNCP, agente_SISLOG]
+                agente_licitacoes_comprasnet, agente_licitacoes_SISLOG, agente_licitantes_sancionados, agente_PCA, agente_PNCP, agente_SISLOG,
+                agente_contratos, agente_contratos_emergenciais, agente_relacao_fiscais_contratos, agente_contratos_locacao_imoveis, agente_parceria_OSCs,
+                agente_obras, agente_obras_paralisadas, agente_obras_audiencias_consultas_publicas]
 )

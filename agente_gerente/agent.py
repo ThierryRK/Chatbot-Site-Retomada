@@ -5,6 +5,8 @@ from sub_agentes.agente_PCA.agent import agente_PCA
 from sub_agentes.agente_PNCP.agent import agente_PNCP
 from sub_agentes.agente_SISLOG.agent import agente_SISLOG
 from sub_agentes.agente_acordos_sem_recursos.agent import agente_acordos_sem_recursos
+from sub_agentes.agente_bens_imoveis.agent import agente_bens_imoveis
+from sub_agentes.agente_bens_moveis.agent import agente_bens_moveis
 from sub_agentes.agente_comprasnet.agent import agente_comprasnet
 from sub_agentes.agente_contratos.agent import agente_contratos
 from sub_agentes.agente_contratos_emergenciais.agent import agente_contratos_emergenciais
@@ -16,6 +18,7 @@ from sub_agentes.agente_obras_audiencias_consultas_publicas.agent import agente_
 from sub_agentes.agente_obras_paralisadas.agent import agente_obras_paralisadas
 from sub_agentes.agente_parceria_OSCs.agent import agente_parceria_OSCs
 from sub_agentes.agente_relacao_fiscais_contratos.agent import agente_relacao_fiscais_contratos
+from sub_agentes.agente_relacao_veiculos.agent import agente_relacao_veiculos
 from sub_agentes.agente_sequencia_resumo_pagina_web.agent import agente_sequencia_resumo_pagina_web
 from sub_agentes.agente_diarias.agent import agente_diarias
 from sub_agentes.agente_emendas_parlamentares_estaduais.agent import agente_emendas_parlamentares_estaduais
@@ -222,6 +225,18 @@ root_agent = Agent(
             * Gatilhos: "audiências das obras", "consultas públicas das obras".
             * Conflito: "Onde vejo as audiências e consultas públicas das obras?" -> Intenção "Falar com" (P35) vence. Use `agente_obras_audiencias_consultas_publicas`.
             
+        * `agent_name`: `agente_bens_imoveis` (PRIORIDADE 36)
+            * Gatilhos: "Imóveis".
+            * Conflito: "Onde vejo os bens imóveis?" -> Intenção "Falar com" (P36) vence. Use `agente_bens_imoveis`.
+
+        * `agent_name`: `agente_bens_moveis` (PRIORIDADE 37)
+            * Gatilhos: "Móveis".
+            * Conflito: "Onde vejo os bens móveis?" -> Intenção "Falar com" (P37) vence. Use `agente_bens_moveis`.
+
+        * `agent_name`: `agente_relacao_veiculos (PRIORIDADE 38)
+            * Gatilhos: "Veículos".
+            * Conflito: "Onde vejo a relação de veículos?" -> Intenção "Falar com" (P38) vence. Use `agente_relacao_veiculos`.
+
 
         **PASSO 3: FORA DE ESCOPO**
         * **SE** a solicitação for clara (Passo 1), mas não se encaixar em P1, P2 ou P3:
@@ -330,5 +345,6 @@ root_agent = Agent(
                 agente_diarias, agente_folha_de_pagamento, agente_lista_estagiarios, agente_relacao_de_tercerizados, agente_comprasnet,
                 agente_licitacoes_comprasnet, agente_licitacoes_SISLOG, agente_licitantes_sancionados, agente_PCA, agente_PNCP, agente_SISLOG,
                 agente_contratos, agente_contratos_emergenciais, agente_relacao_fiscais_contratos, agente_contratos_locacao_imoveis, agente_parceria_OSCs,
-                agente_obras, agente_obras_paralisadas, agente_obras_audiencias_consultas_publicas]
+                agente_obras, agente_obras_paralisadas, agente_obras_audiencias_consultas_publicas, agente_bens_moveis, agente_bens_imoveis,
+                agente_relacao_veiculos]
 )

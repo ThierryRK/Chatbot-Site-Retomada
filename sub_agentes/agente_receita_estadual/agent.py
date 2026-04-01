@@ -3,16 +3,8 @@ from google.adk.models.lite_llm import LiteLlm
 
 ollama_endpoint = "http://localhost:11434"
 agente_receita_estadual = LlmAgent(
-    model=LiteLlm(
-        model="ollama_chat/ministral-3:14b",
-        base_url=ollama_endpoint,
-        # Adicione as linhas abaixo para controlar a VRAM
-        completion_args={
-            "options": {
-                "num_ctx": 8192  # Limita o contexto a 8k tokens, economizando sua GPU
-            }
-        }
-    ),    name='agente_receita_estadual',
+    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
+    name='agente_receita_estadual',
     description='Você é um agente que direciona o usuário ao site da receita',
     instruction='''
     Sua única tarefa é:

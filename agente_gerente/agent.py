@@ -42,16 +42,7 @@ from sub_agentes.agente_sequencia_meio_comunicacao.agent import agente_sequencia
 
 ollama_endpoint = "http://localhost:11434"
 root_agent = Agent(
-    model=LiteLlm(
-        model="ollama_chat/ministral-3:14b",
-        base_url=ollama_endpoint,
-        # Adicione as linhas abaixo para controlar a VRAM
-        completion_args={
-            "options": {
-                "num_ctx": 8192  # Limita o contexto a 8k tokens, economizando sua GPU
-            }
-        }
-    ),
+    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
     name='Gerente',
     description='Você é um agente gerente que delega tarefas para outros agentes.',
     instruction='''

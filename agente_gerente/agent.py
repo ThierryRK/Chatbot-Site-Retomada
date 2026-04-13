@@ -1,10 +1,15 @@
 from google.adk.agents import Agent
 from google.adk.models.lite_llm import LiteLlm
 
+from sub_agentes.agente_LDO_LOA.agent import agente_LDO_LOA
 from sub_agentes.agente_PCA.agent import agente_PCA
 from sub_agentes.agente_PNCP.agent import agente_PNCP
+from sub_agentes.agente_PPA.agent import agente_PPA
+from sub_agentes.agente_RGF.agent import agente_RGF
+from sub_agentes.agente_RREO.agent import agente_RREO
 from sub_agentes.agente_SISLOG.agent import agente_SISLOG
 from sub_agentes.agente_acordos_sem_recursos.agent import agente_acordos_sem_recursos
+from sub_agentes.agente_balanco_geral_estado.agent import agente_balanco_geral_estado
 from sub_agentes.agente_bens_imoveis.agent import agente_bens_imoveis
 from sub_agentes.agente_bens_moveis.agent import agente_bens_moveis
 from sub_agentes.agente_comprasnet.agent import agente_comprasnet
@@ -13,12 +18,17 @@ from sub_agentes.agente_contratos_emergenciais.agent import agente_contratos_eme
 from sub_agentes.agente_contratos_locacao_imoveis.agent import agente_contratos_locacao_imoveis
 from sub_agentes.agente_convenios_concedidos.agent import agente_convenios_concedidos
 from sub_agentes.agente_convenios_recebidos.agent import agente_convenios_recebidos
+from sub_agentes.agente_julgamento_contas_TCE_GO.agent import agente_julgamento_contas_TCE_GO
+from sub_agentes.agente_monitoramento_programas_projetos_acoes_atividades.agent import \
+    agente_monitoramento_programas_projetos_acoes_atividades
 from sub_agentes.agente_obras.agent import agente_obras
 from sub_agentes.agente_obras_audiencias_consultas_publicas.agent import agente_obras_audiencias_consultas_publicas
 from sub_agentes.agente_obras_paralisadas.agent import agente_obras_paralisadas
 from sub_agentes.agente_parceria_OSCs.agent import agente_parceria_OSCs
+from sub_agentes.agente_plano_estrategico_institucional.agent import agente_plano_estrategico_institucional
 from sub_agentes.agente_relacao_fiscais_contratos.agent import agente_relacao_fiscais_contratos
 from sub_agentes.agente_relacao_veiculos.agent import agente_relacao_veiculos
+from sub_agentes.agente_relatorio_gestao_atividades.agent import agente_relatorio_gestao_atividades
 from sub_agentes.agente_sequencia_resumo_pagina_web.agent import agente_sequencia_resumo_pagina_web
 from sub_agentes.agente_diarias.agent import agente_diarias
 from sub_agentes.agente_emendas_parlamentares_estaduais.agent import agente_emendas_parlamentares_estaduais
@@ -89,42 +99,42 @@ root_agent = Agent(
             
         * `agent_name`: `agente_sequencia_doacoes` (PRIORIDADE 3)
             * Gatilhos: "Doações", "Donativos".
-            * Conflito: "A Retomada recebe doações?" -> Intenção "Falar com" (P3) vence. Use `agente_sequencia_doacoes`.
+            * Conflito: "A Retomada recebe doações?" -> Intenção "Doações" (P3) vence. Use `agente_sequencia_doacoes`.
             
         * `agent_name`: `agente_receita_estadual` (PRIORIDADE 4)
             * Gatilhos: "Receita", "Faturamento".
-            * Conflito: "Qual a receita da Retomada?" -> Intenção "Falar com" (P4) vence. Use `agente_receita_estadual`.
+            * Conflito: "Qual a receita da Retomada?" -> Intenção "Receita" (P4) vence. Use `agente_receita_estadual`.
 
         * `agent_name`: `agente_de_sequencia_de_resumos_de_pagina_web` (PRIORIDADE 5)
             * Gatilhos (Apenas se P1 e P2 não se aplicarem): "Programa Mais Empregos", "Cursos oferecidos pelo Cotec", "Cerveja de mandioca".
             
         * `agent_name`: `agente_emendas_parlamentares_estaduais` (PRIORIDADE 6)
             * Gatilhos: "Emendas estaduais".
-            * Conflito: "Quais são as emendas estaduais da Retomada?" -> Intenção "Falar com" (P6) vence. Use `agente_emendas_parlamentares_estaduais`.
+            * Conflito: "Quais são as emendas estaduais da Retomada?" -> Intenção "Emendas estaduais" (P6) vence. Use `agente_emendas_parlamentares_estaduais`.
             
         * `agent_name`: `agente_emendas_parlamentares_federais` (PRIORIDADE 7)
             * Gatilhos: "Emendas federais".
-            * Conflito: "Quais são as emendas federais da Retomada?" -> Intenção "Falar com" (P7) vence. Use `agente_emendas_parlamentares_federais`.
+            * Conflito: "Quais são as emendas federais da Retomada?" -> Intenção "Emendas federais" (P7) vence. Use `agente_emendas_parlamentares_federais`.
             
         * `agent_name`: `agente_empenhos_pagamentos` (PRIORIDADE 8)
             * Gatilhos: "Empenhos", "Pagamentos".
-            * Conflito: "Quais são os empenhos da Retomada?" -> Intenção "Falar com" (P8) vence. Use `agente_empenhos_pagamentos`.
+            * Conflito: "Quais são os empenhos da Retomada?" -> Intenção "Empenhos" (P8) vence. Use `agente_empenhos_pagamentos`.
             
         * `agent_name`: `agente_execucao_orcamentaria` (PRIORIDADE 9)
             * Gatilhos: "Execução orçamentária", "Orçamento".
-            * Conflito: "Qual o orçamento da Retomada?" -> Intenção "Falar com" (P9) vence. Use `agente_execucao_orcamentaria`.
+            * Conflito: "Qual o orçamento da Retomada?" -> Intenção "Orçamento" (P9) vence. Use `agente_execucao_orcamentaria`.
             
         * `agent_name`: `agente_gastos_governamentais` (PRIORIDADE 10)
             * Gatilhos: "Gastos governamentais".
-            * Conflito: "Quais são os gastos governamentais da Retomada?" -> Intenção "Falar com" (P10) vence. Use `agente_gastos_governamentais`.
+            * Conflito: "Quais são os gastos governamentais da Retomada?" -> Intenção "Gastos governamentais" (P10) vence. Use `agente_gastos_governamentais`.
             
         * `agent_name`: `agente_gastos_publicidade_propaganda` (PRIORIDADE 11)
             * Gatilhos: "Gastos com publicidade", "Gastos com propaganda".
-            * Conflito: "Quais são os gastos com publicidade da Retomada?" -> Intenção "Falar com" (P11) vence. Use `agente_gastos_publicidade_propaganda`.
+            * Conflito: "Quais são os gastos com publicidade da Retomada?" -> Intenção "Gastos com publicidade" (P11) vence. Use `agente_gastos_publicidade_propaganda`.
             
         * `agent_name`: `agente_ordem_cronologica_pagamentos` (PRIORIDADE 12)
             * Gatilhos: "Ordem de pagamentos".
-            * Conflito: "Qual a ordem de pagamentos da Retomada?" -> Intenção "Falar com" (P12) vence. Use `agente_ordem_cronologica_pagamentos`.
+            * Conflito: "Qual a ordem de pagamentos da Retomada?" -> Intenção "Ordem de pagamentos" (P12) vence. Use `agente_ordem_cronologica_pagamentos`.
             
         * `agent_name`: `agente_sequencia_chamamentos_publicos` (PRIORIDADE 13)
             * Gatilhos: "Chamamentos públicos", "editais".
@@ -134,99 +144,135 @@ root_agent = Agent(
             
         * `agent_name`: `agente_convenios_concedidos` (PRIORIDADE 15)
             * Gatilhos: "Convênios concedidos".
-            * Conflito: "Onde vejo os convênios concedidos?" -> Intenção "Falar com" (P15) vence. Use `agente_convenios_concedidos`.
+            * Conflito: "Onde vejo os convênios concedidos?" -> Intenção "Convênios concedidos" (P15) vence. Use `agente_convenios_concedidos`.
             
         * `agent_name`: `agente_convenios_recebidos` (PRIORIDADE 16)
             * Gatilhos: "Convênios recebidos".
-            * Conflito: "Onde vejo os convênios recebidos?" -> Intenção "Falar com" (P16) vence. Use `agente_convenios_recebidos`.
+            * Conflito: "Onde vejo os convênios recebidos?" -> Intenção "Convênios recebidos" (P16) vence. Use `agente_convenios_recebidos`.
             
         * `agent_name`: `agente_diarias` (PRIORIDADE 17)
             * Gatilhos: "Diárias".
-            * Conflito: "Onde vejo as diárias?" -> Intenção "Falar com" (P17) vence. Use `agente_diarias`.
+            * Conflito: "Onde vejo as diárias?" -> Intenção "Diárias" (P17) vence. Use `agente_diarias`.
             
         * `agent_name`: `agente_folha_de_pagamento` (PRIORIDADE 18)
             * Gatilhos: "Folha de pagamento".
-            * Conflito: "Onde vejo a folha de pagamento?" -> Intenção "Falar com" (P18) vence. Use `agente_folha_de_pagamento`.
+            * Conflito: "Onde vejo a folha de pagamento?" -> Intenção "Folha de pagamento" (P18) vence. Use `agente_folha_de_pagamento`.
             
         * `agent_name`: `agente_lista_estagiarios` (PRIORIDADE 19)
             * Gatilhos: "Lista de estagiários".
-            * Conflito: "Onde vejo a lista de estagiários?" -> Intenção "Falar com" (P19) vence. Use `agente_lista_estagiarios`.
+            * Conflito: "Onde vejo a lista de estagiários?" -> Intenção "Lista de estagiários" (P19) vence. Use `agente_lista_estagiarios`.
             
         * `agent_name`: `agente_relacao_de_tercerizados` (PRIORIDADE 20)
             * Gatilhos: "Relação de tercerizados", "Tercerizados".
-            * Conflito: "Onde vejo a relação de tercerizados?" -> Intenção "Falar com" (P20) vence. Use `agente_relacao_de_tercerizados`.
+            * Conflito: "Onde vejo a relação de tercerizados?" -> Intenção "Relação de tercerizados" (P20) vence. Use `agente_relacao_de_tercerizados`.
             
         * `agent_name`: `agente_comprasnet` (PRIORIDADE 21)
             * Gatilhos: "ComprasNet".
-            * Conflito: "Onde vejo o ComprasNet?" -> Intenção "Falar com" (P21) vence. Use `agente_comprasnet`.
+            * Conflito: "Onde vejo o ComprasNet?" -> Intenção "ComprasNet" (P21) vence. Use `agente_comprasnet`.
             
         * `agent_name`: `agente_licitacoes_comprasnet` (PRIORIDADE 22)
             * Gatilhos: "Licitações ComprasNet".
-            * Conflito: "Onde vejo as licitações da ComprasNet?" -> Intenção "Falar com" (P22) vence. Use `agente_licitacoes_comprasnet`.
+            * Conflito: "Onde vejo as licitações da ComprasNet?" -> Intenção "Licitações ComprasNet" (P22) vence. Use `agente_licitacoes_comprasnet`.
             
         * `agent_name`: `agente_licitacoes_SISLOG` (PRIORIDADE 23)
             * Gatilhos: "Licitações SISLOG".
-            * Conflito: "Onde vejo as licitações da SISLOG?" -> Intenção "Falar com" (P23) vence. Use `agente_licitacoes_SISLOG`.
+            * Conflito: "Onde vejo as licitações da SISLOG?" -> Intenção "Licitações SISLOG" (P23) vence. Use `agente_licitacoes_SISLOG`.
             
         * `agent_name`: `agente_licitantes_sancionados` (PRIORIDADE 24)
             * Gatilhos: "Licitantes sancionados".
-            * Conflito: "Onde vejo os licitantes sancionados?" -> Intenção "Falar com" (P24) vence. Use `agente_licitantes_sancionados`.
+            * Conflito: "Onde vejo os licitantes sancionados?" -> Intenção "Licitantes sancionados" (P24) vence. Use `agente_licitantes_sancionados`.
             
         * `agent_name`: `agente_PCA` (PRIORIDADE 25)
             * Gatilhos: "PCA", "Plano de contratações anual".
-            * Conflito: "Onde vejo o PCA?" -> Intenção "Falar com" (P25) vence. Use `agente_PCA`.
+            * Conflito: "Onde vejo o PCA?" -> Intenção "PCA" (P25) vence. Use `agente_PCA`.
             
         * `agent_name`: `agente_PNCP` (PRIORIDADE 26)
             * Gatilhos: "PNCP", "Portal nacional de contratações públicas".
-            * Conflito: "Onde vejo o PNCP?" -> Intenção "Falar com" (P26) vence. Use `agente_PNCP`.
+            * Conflito: "Onde vejo o PNCP?" -> Intenção "PNCP" (P26) vence. Use `agente_PNCP`.
             
         * `agent_name`: `agente_SISLOG` (PRIORIDADE 27)
             * Gatilhos: "SISLOG".
-            * Conflito: "Onde vejo o SISLOG?" -> Intenção "Falar com" (P27) vence. Use `agente_SISLOG`.
+            * Conflito: "Onde vejo o SISLOG?" -> Intenção "SISLOG" (P27) vence. Use `agente_SISLOG`.
             
         * `agent_name`: `agente_contratos` (PRIORIDADE 28)
-            * Gatilhos: "contratos".
-            * Conflito: "Onde vejo os contratos?" -> Intenção "Falar com" (P28) vence. Use `agente_contratos`.
+            * Gatilhos: "Contratos".
+            * Conflito: "Onde vejo os contratos?" -> Intenção "Contratos" (P28) vence. Use `agente_contratos`.
             
         * `agent_name`: `agente_contratos_emergenciais` (PRIORIDADE 29)
             * Gatilhos: "contratos emergenciais".
-            * Conflito: "Onde vejo os contratos emergenciais?" -> Intenção "Falar com" (P29) vence. Use `agente_contratos_emergenciais`.
+            * Conflito: "Onde vejo os contratos emergenciais?" -> Intenção "contratos emergenciais" (P29) vence. Use `agente_contratos_emergenciais`.
             
         * `agent_name`: `agente_relacao_fiscais_contratos` (PRIORIDADE 30)
             * Gatilhos: "relação dos fiscais dos contratos".
-            * Conflito: "Onde vejo a relação dos fiscais dos contratos?" -> Intenção "Falar com" (P30) vence. Use `agente_relacao_fiscais_contratos`.
+            * Conflito: "Onde vejo a relação dos fiscais dos contratos?" -> Intenção "relação dos fiscais dos contratos" (P30) vence. Use `agente_relacao_fiscais_contratos`.
             
         * `agent_name`: `agente_contratos_locacao_imoveis` (PRIORIDADE 31)
             * Gatilhos: "contratos de locação de imóveis".
-            * Conflito: "Onde vejo os contratos de locação de imóveis?" -> Intenção "Falar com" (P31) vence. Use `agente_contratos_locacao_imoveis`.
+            * Conflito: "Onde vejo os contratos de locação de imóveis?" -> Intenção "contratos de locação de imóveis" (P31) vence. Use `agente_contratos_locacao_imoveis`.
             
         * `agent_name`: `agente_parceria_OSCs` (PRIORIDADE 32)
             * Gatilhos: "parceria com OSCs","OSCs".
-            * Conflito: "Onde vejo a parceria com OSCs?" -> Intenção "Falar com" (P32) vence. Use `agente_parceria_OSCs`.
+            * Conflito: "Onde vejo a parceria com OSCs?" -> Intenção "parceria com OSCs" (P32) vence. Use `agente_parceria_OSCs`.
             
         * `agent_name`: `agente_obras` (PRIORIDADE 33)
             * Gatilhos: "obras".
-            * Conflito: "Onde vejo as obras?" -> Intenção "Falar com" (P33) vence. Use `agente_obras`.
+            * Conflito: "Onde vejo as obras?" -> Intenção "obras" (P33) vence. Use `agente_obras`.
             
         * `agent_name`: `agente_obras_paralisadas` (PRIORIDADE 34)
             * Gatilhos: "obras paralisadas".
-            * Conflito: "Onde vejo as obras paralisadas?" -> Intenção "Falar com" (P34) vence. Use `agente_obras_paralisadas`.
+            * Conflito: "Onde vejo as obras paralisadas?" -> Intenção "obras paralisadas" (P34) vence. Use `agente_obras_paralisadas`.
             
         * `agent_name`: `agente_obras_audiencias_consultas_publicas` (PRIORIDADE 35)
             * Gatilhos: "audiências das obras", "consultas públicas das obras".
-            * Conflito: "Onde vejo as audiências e consultas públicas das obras?" -> Intenção "Falar com" (P35) vence. Use `agente_obras_audiencias_consultas_publicas`.
+            * Conflito: "Onde vejo as audiências e consultas públicas das obras?" -> Intenção "consultas públicas das obras" (P35) vence. Use `agente_obras_audiencias_consultas_publicas`.
             
         * `agent_name`: `agente_bens_imoveis` (PRIORIDADE 36)
             * Gatilhos: "Imóveis".
-            * Conflito: "Onde vejo os bens imóveis?" -> Intenção "Falar com" (P36) vence. Use `agente_bens_imoveis`.
+            * Conflito: "Onde vejo os bens imóveis?" -> Intenção "Imóveis" (P36) vence. Use `agente_bens_imoveis`.
 
         * `agent_name`: `agente_bens_moveis` (PRIORIDADE 37)
             * Gatilhos: "Móveis".
-            * Conflito: "Onde vejo os bens móveis?" -> Intenção "Falar com" (P37) vence. Use `agente_bens_moveis`.
+            * Conflito: "Onde vejo os bens móveis?" -> Intenção "Móveis" (P37) vence. Use `agente_bens_moveis`.
 
-        * `agent_name`: `agente_relacao_veiculos (PRIORIDADE 38)
+        * `agent_name`: `agente_relacao_veiculos` (PRIORIDADE 38)
             * Gatilhos: "Veículos".
-            * Conflito: "Onde vejo a relação de veículos?" -> Intenção "Falar com" (P38) vence. Use `agente_relacao_veiculos`.
+            * Conflito: "Onde vejo a relação de veículos?" -> Intenção "Veículos" (P38) vence. Use `agente_relacao_veiculos`.
+            
+        * `agent_name`: `agente_balanco_geral_estado` (PRIORIDADE 39)
+            * Gatilhos: "Balanço geral".
+            * Conflito: "Onde vejo o balanço geral?" -> Intenção "Balanço geral" (P39) vence. Use `agente_balanco_geral_estado`.
+            
+        * `agent_name`: `agente_julgamento_contas_TCE_GO` (PRIORIDADE 40)
+            * Gatilhos: "Julgamento de contas TCE-GO", "TCE", "Julgamento de contas".
+            * Conflito: "Onde vejo o julgamento de contas TCE?" -> Intenção "Julgamento de contas TCE-GO" (P40) vence. Use `agente_julgamento_contas_TCE_GO`.
+            
+        * `agent_name`: `agente_LDO_LOA` (PRIORIDADE 41)
+            * Gatilhos: "LDO", "LOA", "Lei de Diretrizes Orçamentárias", "Lei Orçamentária Anual".
+            * Conflito: "Onde vejo a LDO?" -> Intenção "LDO" (P41) vence. Use `agente_LDO_LOA`.
+            
+        * `agent_name`: `agente_monitoramento_programas_projetos_acoes_atividades` (PRIORIDADE 42)
+            * Gatilhos: "Monitoramento de Programas, Projetos, Ações e Atividades", "Monitoramento de Programas", "Monitoramento de Projetos", "Monitoramento de Ações", "Monitoramento de Atividades".
+            * Conflito: "Onde vejo o monitoramento de programas, projetos, ações e atividades?" -> Intenção "Monitoramento de Programas, Projetos, Ações e Atividades" (P42) vence. Use `agente_monitoramento_programas_projetos_acoes_atividades`.
+            
+        * `agent_name`: `agente_plano_estrategico_institucional` (PRIORIDADE 43)
+            * Gatilhos: "Plano Estratégico Institucional".
+            * Conflito: "Onde vejo o plano estratégico institucional?" -> Intenção "Plano Estratégico Institucional" (P43) vence. Use `agente_plano_estrategico_institucional`.
+            
+        * `agent_name`: `agente_PPA` (PRIORIDADE 44)
+            * Gatilhos: "PPA", "Portal do Plano Plurianual".
+            * Conflito: "Onde vejo o PPA?" -> Intenção "PPA" (P44) vence. Use `agente_PPA`.
+            
+        * `agent_name`: `agente_relatorio_gestao_atividades` (PRIORIDADE 45)
+            * Gatilhos: "Relatório de Gestão ou Atividades", "Relatório de Gestão", "Relatório de Atividades".
+            * Conflito: "Onde vejo o relatório de gestão ou atividades?" -> Intenção "Relatório de Gestão ou Atividades" (P45) vence. Use `agente_relatorio_gestao_atividades`.
+            
+        * `agent_name`: `agente_RGF` (PRIORIDADE 46)
+            * Gatilhos: "RGF", "Relatório de Gestão Fiscal".
+            * Conflito: "Onde vejo o RGF?" -> Intenção "RGF" (P46) vence. Use `agente_RGF`.
+            
+        * `agent_name`: `agente_RREO` (PRIORIDADE 47)
+            * Gatilhos: "RREO", "Relatório Resumido de Execução Orçamentária".
+            * Conflito: "Onde vejo o RREO?" -> Intenção "RREO" (P47) vence. Use `agente_RREO`.
 
 
         **PASSO 3: FORA DE ESCOPO**
@@ -337,5 +383,7 @@ root_agent = Agent(
                 agente_licitacoes_comprasnet, agente_licitacoes_SISLOG, agente_licitantes_sancionados, agente_PCA, agente_PNCP, agente_SISLOG,
                 agente_contratos, agente_contratos_emergenciais, agente_relacao_fiscais_contratos, agente_contratos_locacao_imoveis, agente_parceria_OSCs,
                 agente_obras, agente_obras_paralisadas, agente_obras_audiencias_consultas_publicas, agente_bens_moveis, agente_bens_imoveis,
-                agente_relacao_veiculos]
+                agente_relacao_veiculos, agente_balanco_geral_estado, agente_julgamento_contas_TCE_GO, agente_LDO_LOA,
+                agente_monitoramento_programas_projetos_acoes_atividades, agente_plano_estrategico_institucional, agente_PPA,
+                agente_relatorio_gestao_atividades, agente_RGF, agente_RREO]
 )

@@ -273,6 +273,54 @@ root_agent = Agent(
         * `agent_name`: `agente_RREO` (PRIORIDADE 47)
             * Gatilhos: "RREO", "Relatório Resumido de Execução Orçamentária".
             * Conflito: "Onde vejo o RREO?" -> Intenção "RREO" (P47) vence. Use `agente_RREO`.
+            
+        * `agent_name`: `agente_autoridade_monitoramento_aplicacao_lei` (PRIORIDADE 48)
+            * Gatilhos: "Autoridade de Monitoramento da Aplicação da Lei".
+            * Conflito: "Onde vejo a Autoridade de Monitoramento da Aplicação da Lei?" -> Intenção "Autoridade de Monitoramento da Aplicação da Lei" (P48) vence. Use `agente_autoridade_monitoramento_aplicacao_lei`.
+            
+        * `agent_name`: `agente_classificacao_informacoes_sigilosas` (PRIORIDADE 49)
+            * Gatilhos: "Classificação das informações sigilosas".
+            * Conflito: "Onde vejo a Classificação das informações sigilosas?" -> Intenção "Classificação das informações sigilosas" (P49) vence. Use `agente_classificacao_informacoes_sigilosas`.
+            
+        * `agent_name`: `agente_e_SIC_eletronico` (PRIORIDADE 50)
+            * Gatilhos: "e-SIC Eletrônico".
+            * Conflito: "Onde vejo o e-SIC Eletrônico?" -> Intenção "e-SIC Eletrônico" (P50) vence. Use `agente_e_SIC_eletronico`.
+            
+        * `agent_name`: `agente_encarregado_tratamento_dados_pessoais` (PRIORIDADE 51)
+            * Gatilhos: "Encarregado pelo Tratamento dos Dados Pessoais".
+            * Conflito: "Onde vejo o Encarregado pelo Tratamento dos Dados Pessoais?" -> Intenção "Encarregado pelo Tratamento dos Dados Pessoais" (P51) vence. Use `agente_encarregado_tratamento_dados_pessoais`.
+            
+        * `agent_name`: `agente_expresso_goias` (PRIORIDADE 52)
+            * Gatilhos: "Expresso Goiás".
+            * Conflito: "Onde vejo o Expresso Goiás?" -> Intenção "Expresso Goiás" (P52) vence. Use `agente_expresso_goias`.
+            
+        * `agent_name`: `agente_lei_acesso_informacao_estadual` (PRIORIDADE 53)
+            * Gatilhos: "Lei de Acesso à Informação Estadual".
+            * Conflito: "Onde vejo a Lei de Acesso à Informação Estadual?" -> Intenção "Lei de Acesso à Informação Estadual" (P53) vence. Use `agente_lei_acesso_informacao_estadual`.
+            
+        * `agent_name`: `agente_ouvidoria_atendimento_presencial` (PRIORIDADE 54)
+            * Gatilhos: "Ouvidoria – Atendimento Presencial".
+            * Conflito: "Onde vejo a Ouvidoria – Atendimento Presencial?" -> Intenção "Ouvidoria – Atendimento Presencial" (P54) vence. Use `agente_ouvidoria_atendimento_presencial`.
+            
+        * `agent_name`: `agente_pesquisa_satisfacao` (PRIORIDADE 55)
+            * Gatilhos: "Pesquisa de Satisfação".
+            * Conflito: "Onde fica a Pesquisa de Satisfação?" -> Intenção "Pesquisa de Satisfação" (P55) vence. Use `agente_pesquisa_satisfacao`.
+            
+        * `agent_name`: `agente_politica_privacidade_protecao_dados` (PRIORIDADE 56)
+            * Gatilhos: "Política de Privacidade e Proteção de Dados".
+            * Conflito: "Onde vejo a Política de Privacidade e Proteção de Dados?" -> Intenção "Política de Privacidade e Proteção de Dados" (P56) vence. Use `agente_politica_privacidade_protecao_dados`.
+            
+        * `agent_name`: `agente_relatorio_gestao_ouvidoria` (PRIORIDADE 57)
+            * Gatilhos: "Relatório de Gestão de Ouvidoria".
+            * Conflito: "Onde vejo o Relatório de Gestão de Ouvidoria?" -> Intenção "Relatório de Gestão de Ouvidoria" (P57) vence. Use `agente_relatorio_gestao_ouvidoria`.
+            
+        * `agent_name`: `agente_relatorios_pedidos_acesso_informacao` (PRIORIDADE 58)
+            * Gatilhos: "Relatórios de pedidos de acesso à informação".
+            * Conflito: "Onde vejo os Relatórios de pedidos de acesso à informação?" -> Intenção "Relatórios de pedidos de acesso à informação" (P58) vence. Use `agente_relatorios_pedidos_acesso_informacao`.
+            
+        * `agent_name`: `agente_SIC_fisico_unidades_vapt_vupt` (PRIORIDADE 59)
+            * Gatilhos: "SIC Físico – Unidades do Vapt Vupt".
+            * Conflito: "Onde vejo as unidades vapt vupt?" -> Intenção "SIC Físico – Unidades do Vapt Vupt" (P59) vence. Use `agente_SIC_fisico_unidades_vapt_vupt`.
 
 
         **PASSO 3: FORA DE ESCOPO**

@@ -9,15 +9,18 @@ from sub_agentes.agente_RGF.agent import agente_RGF
 from sub_agentes.agente_RREO.agent import agente_RREO
 from sub_agentes.agente_SISLOG.agent import agente_SISLOG
 from sub_agentes.agente_acordos_sem_recursos.agent import agente_acordos_sem_recursos
+from sub_agentes.agente_audiencias_publicas.agent import agente_audiencias_publicas
 from sub_agentes.agente_balanco_geral_estado.agent import agente_balanco_geral_estado
 from sub_agentes.agente_bens_imoveis.agent import agente_bens_imoveis
 from sub_agentes.agente_bens_moveis.agent import agente_bens_moveis
 from sub_agentes.agente_comprasnet.agent import agente_comprasnet
+from sub_agentes.agente_consultas_publicas.agent import agente_consultas_publicas
 from sub_agentes.agente_contratos.agent import agente_contratos
 from sub_agentes.agente_contratos_emergenciais.agent import agente_contratos_emergenciais
 from sub_agentes.agente_contratos_locacao_imoveis.agent import agente_contratos_locacao_imoveis
 from sub_agentes.agente_convenios_concedidos.agent import agente_convenios_concedidos
 from sub_agentes.agente_convenios_recebidos.agent import agente_convenios_recebidos
+from sub_agentes.agente_dados_abertos_goias.agent import agente_dados_abertos_goias
 from sub_agentes.agente_julgamento_contas_TCE_GO.agent import agente_julgamento_contas_TCE_GO
 from sub_agentes.agente_monitoramento_programas_projetos_acoes_atividades.agent import \
     agente_monitoramento_programas_projetos_acoes_atividades
@@ -26,6 +29,9 @@ from sub_agentes.agente_obras_audiencias_consultas_publicas.agent import agente_
 from sub_agentes.agente_obras_paralisadas.agent import agente_obras_paralisadas
 from sub_agentes.agente_parceria_OSCs.agent import agente_parceria_OSCs
 from sub_agentes.agente_plano_estrategico_institucional.agent import agente_plano_estrategico_institucional
+from sub_agentes.agente_portal_goias_transparente.agent import agente_portal_goias_transparente
+from sub_agentes.agente_projetos_inovacao_servico_publico.agent import agente_projetos_inovacao_servico_publico
+from sub_agentes.agente_projetos_participacao_social.agent import agente_projetos_participacao_social
 from sub_agentes.agente_relacao_fiscais_contratos.agent import agente_relacao_fiscais_contratos
 from sub_agentes.agente_relacao_veiculos.agent import agente_relacao_veiculos
 from sub_agentes.agente_relatorio_gestao_atividades.agent import agente_relatorio_gestao_atividades
@@ -321,7 +327,31 @@ root_agent = Agent(
         * `agent_name`: `agente_SIC_fisico_unidades_vapt_vupt` (PRIORIDADE 59)
             * Gatilhos: "SIC Físico – Unidades do Vapt Vupt".
             * Conflito: "Onde vejo as unidades vapt vupt?" -> Intenção "SIC Físico – Unidades do Vapt Vupt" (P59) vence. Use `agente_SIC_fisico_unidades_vapt_vupt`.
+            
+        * `agent_name`: `agente_dados_abertos_goias` (PRIORIDADE 60)
+            * Gatilhos: "Dados Abertos".
+            * Conflito: "Onde vejo os Dados Abertos Goiás?" -> Intenção "Dados Abertos" (P60) vence. Use `agente_dados_abertos_goias`.
 
+        * `agent_name`: `agente_audiencias_publicas` (PRIORIDADE 61)
+            * Gatilhos: "Audiências Públicas".
+            * Conflito: "Onde vejo as Audiências Públicas?" -> Intenção "Audiências Públicas" (P61) vence. Use `agente_audiencias_publicas`.
+            
+        * `agent_name`: `agente_consultas_publicas` (PRIORIDADE 62)
+            * Gatilhos: "Consultas Públicas".
+            * Conflito: "Onde vejo as Consultas Públicas?" -> Intenção "Consultas Públicas" (P62) vence. Use `agente_consultas_publicas`.
+            
+        * `agent_name`: `agente_portal_goias_transparente` (PRIORIDADE 63)
+            * Gatilhos: "Portal Goiás Transparente", "Transparência".
+            * Conflito: "Onde vejo o Portal Goiás Transparente?" -> Intenção "Portal Goiás Transparente" (P63) vence. Use `agente_portal_goias_transparente`.
+            
+        * `agent_name`: `agente_projetos_inovacao_servico_publico` (PRIORIDADE 64)
+            * Gatilhos: "Projetos de Inovação".
+            * Conflito: "Onde vejo os Projetos de Inovação no Serviço Público?" -> Intenção "Projetos de Inovação" (P64) vence. Use `agente_projetos_inovacao_servico_publico`.
+            
+        * `agent_name`: `agente_projetos_participacao_social` (PRIORIDADE 65)
+            * Gatilhos: "Projetos de Participação Social".
+            * Conflito: "Onde vejo os Projetos de Participação Social?" -> Intenção "Projetos de Participação Social" (P65) vence. Use `agente_projetos_participacao_social`.
+            
 
         **PASSO 3: FORA DE ESCOPO**
         * **SE** a solicitação for clara (Passo 1), mas não se encaixar em P1, P2 ou P3:
@@ -433,5 +463,6 @@ root_agent = Agent(
                 agente_obras, agente_obras_paralisadas, agente_obras_audiencias_consultas_publicas, agente_bens_moveis, agente_bens_imoveis,
                 agente_relacao_veiculos, agente_balanco_geral_estado, agente_julgamento_contas_TCE_GO, agente_LDO_LOA,
                 agente_monitoramento_programas_projetos_acoes_atividades, agente_plano_estrategico_institucional, agente_PPA,
-                agente_relatorio_gestao_atividades, agente_RGF, agente_RREO]
+                agente_relatorio_gestao_atividades, agente_RGF, agente_RREO, agente_projetos_participacao_social, agente_projetos_inovacao_servico_publico,
+                agente_portal_goias_transparente, agente_consultas_publicas, agente_audiencias_publicas, agente_dados_abertos_goias]
 )

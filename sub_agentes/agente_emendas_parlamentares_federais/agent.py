@@ -3,7 +3,7 @@ from google.adk.models.lite_llm import LiteLlm
 
 ollama_endpoint = "http://localhost:11434"
 agente_emendas_parlamentares_federais = LlmAgent(
-    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
+    model=LiteLlm(model="ollama_chat/ministral-3:3b", base_url=ollama_endpoint),
     name='agente_emendas_parlamentares_federais',
     description='Você é um agente que direciona o usuário ao site das emendas federais',
     instruction='''

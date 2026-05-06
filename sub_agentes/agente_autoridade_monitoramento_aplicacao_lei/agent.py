@@ -3,7 +3,7 @@ from google.adk.models.lite_llm import LiteLlm
 
 ollama_endpoint = "http://localhost:11434"
 agente_autoridade_monitoramento_aplicacao_lei = LlmAgent(
-    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
+    model=LiteLlm(model="ollama_chat/ministral-3:3b", base_url=ollama_endpoint),
     name='agente_autoridade_monitoramento_aplicacao_lei',
     description='Você é um agente que direciona o usuário à página de Autoridade de Monitoramento da Aplicação da Lei',
     instruction='''

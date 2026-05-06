@@ -3,7 +3,7 @@ from google.adk.models.lite_llm import LiteLlm
 
 ollama_endpoint = "http://localhost:11434"
 agente_relatorio_gestao_ouvidoria = LlmAgent(
-    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
+    model=LiteLlm(model="ollama_chat/ministral-3:3b", base_url=ollama_endpoint),
     name='agente_relatorio_gestao_ouvidoria',
     description='Você é um agente que direciona o usuário à página Relatório de Gestão de Ouvidoria',
     instruction='''

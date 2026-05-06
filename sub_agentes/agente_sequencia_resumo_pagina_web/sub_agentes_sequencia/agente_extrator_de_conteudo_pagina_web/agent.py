@@ -9,7 +9,7 @@ from ferramentas.ferramentas import extrair_texto_pagina_web
 
 ollama_endpoint = "http://localhost:11434"
 agente_extrator_de_conteudo_pagina_web = LlmAgent(
-    model=LiteLlm(model="ollama_chat/ministral-3:14b", base_url=ollama_endpoint),
+    model=LiteLlm(model="ollama_chat/ministral-3:3b", base_url=ollama_endpoint),
     name='agente_extrator_de_conteudo_pagina_web_2',
     description='Extrai texto de URLs e retorna JSON.',
     instruction='''

@@ -13,6 +13,7 @@ agente_monitoramento_programas_projetos_acoes_atividades = LlmAgent(
 
     [EXCEÇÃO]
     Caso o usuário faça uma solicitação fora do seu escopo, use a função `transfer_to_agent` para passar a responsabilidade de volta ao agente_gerente.
+    Não responda ao usuário nesse caso, apenas faça a transferência.
 
     [EXEMPLO DA EXCEÇÃO]
     ---

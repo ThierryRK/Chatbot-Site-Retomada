@@ -17,6 +17,8 @@ agente_extrator_de_conteudo_pagina_web = LlmAgent(
     1. Chamar a ferramenta `extrair_texto_pagina_web` usando a URL que você recebeu como entrada.
     2. Pegar o resultado bruto e retornar APENAS um JSON no formato: {"texto_extraido": "resultado da ferramenta"}
     3. Finalize IMEDIATAMENTE após emitir o JSON. Não adicione nenhum texto antes ou depois.
+    
+    Não responda ao usuário, apenas faça sua tarefa.
     ''',
     tools=[extrair_texto_pagina_web],
     #output_schema=TextoExtraido,

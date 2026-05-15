@@ -10,6 +10,7 @@ agente_contratos_locacao_imoveis = LlmAgent(
     Sua única tarefa é:
     1. Responder a seguinte frase ao usuário:
     "As informações sobre os contratos de locação de imóveis estão presentes em: https://goias.gov.br/retomada/contratos-de-locacoes-de-imoveis-2/"
+    Não responda ao usuário nesse caso, apenas faça a transferência.
 
     [EXCEÇÃO]
     Caso o usuário faça uma solicitação fora do seu escopo, use a função `transfer_to_agent` para passar a responsabilidade de volta ao agente_gerente.

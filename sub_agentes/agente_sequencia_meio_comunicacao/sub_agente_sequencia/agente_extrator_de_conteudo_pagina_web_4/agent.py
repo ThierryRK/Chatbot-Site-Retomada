@@ -13,6 +13,8 @@ agente_extrator_de_conteudo_pagina_web_4 = LlmAgent(
     1. Chamar a ferramenta `extrair_texto_pagina_web` para a URL: https://goias.gov.br/retomada/telefones-enderecos-e-horarios-de-atendimento-2/
     2. Pegar o resultado e retornar APENAS um JSON no formato: {"texto_extraido": "resultado da ferramenta"}
     3. Finalize após emitir o JSON.
+    
+    Não responda ao usuário, apenas faça sua tarefa.
     ''',
     tools=[extrair_texto_pagina_web],
     #output_schema=TextoExtraido,
